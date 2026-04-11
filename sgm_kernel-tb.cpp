@@ -59,7 +59,6 @@ int main(int argc, char** argv)
     	gt_f *= scale_x;
     }
 
-
     if (left.cols != IMG_W || left.rows != IMG_H ||
         right.cols != IMG_W || right.rows != IMG_H ||
 		gt_f.cols != IMG_W || gt_f.rows != IMG_H)

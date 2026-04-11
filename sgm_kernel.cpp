@@ -1,5 +1,9 @@
 #include "sgm_params.hpp"
 
+#ifndef __SYNTHESIS__
+#include <iostream>
+#endif
+
 /* Penalties */
 const cost_t P1 = cost_t(10);
 const cost_t P2 = cost_t(150);
@@ -22,6 +26,32 @@ static inline void update_line_buffers(
 
     bufR.shift_up(c);
     bufR.insert_bottom(pR, c);
+}
+
+static inline void update_windows(
+    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
+    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
+    xf::cv::Window<WIN, WIN, pix_t>& winL,
+    xf::cv::Window<WIN, WIN, pix_t>& winR,
+    int c,
+    pix_t pL,
+    pix_t pR)
+{
+#pragma HLS INLINE
+
+    winL.shift_pixels_left();
+    winR.shift_pixels_left();
+
+WindowFill:
+    for (int wy = 0; wy < WIN - 1; ++wy)
+    {
+	#pragma HLS UNROLL factor=2
+        winL.insert_pixel(bufL.getval(wy, c), wy, WIN - 1);
+        winR.insert_pixel(bufR.getval(wy, c), wy, WIN - 1);
+    }
+
+    winL.insert_pixel(pL, WIN - 1, WIN - 1);
+    winR.insert_pixel(pR, WIN - 1, WIN - 1);
 }
 
 static inline pix_t safe_get(
@@ -59,10 +89,10 @@ static void compute_sad_cost_vector(
 	            {
 	#pragma HLS UNROLL factor=2
 	                int colL  = c + wx - cx;
-	                int col_r = c - d + wx - cx;
+	                int colR = c - d + wx - cx;
 
 	                pix_t lpx = safe_get(bufL, wy, colL);
-	                pix_t rpx = safe_get(bufR, wy, col_r);
+	                pix_t rpx = safe_get(bufR, wy, colR);
 
 	                sum += absdiff(lpx, rpx);
 	            }
@@ -143,7 +173,6 @@ AggregationLoop:
     return bestDisp;
 }
 
-
 static void commit_prev_costs(
     cost_t prevCostL[DISP],
     cost_t prevCostT_col[DISP],
@@ -179,6 +208,28 @@ void sgm_kernel(hls::stream<pix_t>& left,
     xf::cv::LineBuffer<WIN, IMG_W, pix_t> bufL;
     xf::cv::LineBuffer<WIN, IMG_W, pix_t> bufR;
 
+    InitBuf:
+    for (int wy = 0; wy < WIN; ++wy)
+    {
+        for (int c = 0; c < IMG_W; ++c)
+        {
+            bufL.val[wy][c] = 0;
+            bufR.val[wy][c] = 0;
+        }
+    }
+
+    xf::cv::Window<WIN, WIN, pix_t> winL;
+    xf::cv::Window<WIN, WIN, pix_t> winR;
+
+    InitWin:
+    for (int wy = 0; wy < WIN; ++wy)
+    {
+        for (int wx = 0; wx < WIN; ++wx)
+        {
+            winL.val[wy][wx] = 0;
+            winR.val[wy][wx] = 0;
+        }
+    }
     /* Cost arrays */
     static cost_t prevCostL[DISP];
 #pragma HLS ARRAY_PARTITION variable=prevCostL complete dim=1
@@ -240,13 +291,16 @@ Row:
             pix_t pR = right.read();
 
             update_line_buffers(bufL, bufR, c, pL, pR);
+            update_windows(bufL, bufR, winL, winR, c, pL, pR);
 
             /* Default output */
             pix_t outDisp = 0;
 
-            if (r >= WIN - 1)
+            if (r >= WIN - 1 && c >= DISP - 1)
             {
-                compute_sad_cost_vector(bufL, bufR, c, cx, curCost);
+            	compute_sad_cost_vector(bufL, bufR, c, cx, curCost);
+
+            	//compute_census_cost_vector(winL, winR, r, c, cx, cy, curCost);
 
                 cost_t minPrevLR = reduce_min_vec(prevCostL);
                 cost_t minPrevTB = reduce_min_vec(prevCostT[c]);
@@ -260,28 +314,6 @@ Row:
                     aggLR_arr,
                     aggTB_arr,
                     aggCost);
-
-                if (r == 96 && c == 160)
-                {
-                    std::cout << "DEBUG pixel (" << r << "," << c << ")\n";
-
-                    for (int d = 0; d < 8; ++d)
-                    {
-                        std::cout << "curCost[" << d << "] = " << curCost[d] << "\n";
-                    }
-
-                    std::cout << "minPrevLR = " << minPrevLR << "\n";
-                    std::cout << "minPrevTB = " << minPrevTB << "\n";
-
-                    for (int d = 0; d < 8; ++d)
-                    {
-                        std::cout << "aggLR[" << d << "] = " << aggLR_arr[d]
-                                  << " aggTB[" << d << "] = " << aggTB_arr[d]
-                                  << " aggCost[" << d << "] = " << aggCost[d] << "\n";
-                    }
-
-                    std::cout << "bestDisp = " << int(bestDisp) << "\n";
-                }
 
                 commit_prev_costs(
                     prevCostL,
