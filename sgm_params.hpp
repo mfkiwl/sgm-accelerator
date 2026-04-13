@@ -9,9 +9,9 @@ using disp_t = ap_uint<8>;
 using cost_t = ap_uint<12>;
 using wide_t = ap_uint<16>;
 
-constexpr int IMG_H = 192;
-constexpr int IMG_W = 640;
-constexpr int DISP  = 64;
+constexpr int IMG_H = 96;
+constexpr int IMG_W = 320;
+constexpr int DISP  = 32;
 constexpr int WIN   = 3;
 
 /*---------------------------------------------------------------------------*/
