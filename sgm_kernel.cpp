@@ -28,32 +28,6 @@ static inline void update_line_buffers(
     bufR.insert_bottom(pR, c);
 }
 
-static inline void update_windows(
-    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
-    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
-    xf::cv::Window<WIN, WIN, pix_t>& winL,
-    xf::cv::Window<WIN, WIN, pix_t>& winR,
-    int c,
-    pix_t pL,
-    pix_t pR)
-{
-#pragma HLS INLINE
-
-    winL.shift_pixels_left();
-    winR.shift_pixels_left();
-
-WindowFill:
-    for (int wy = 0; wy < WIN - 1; ++wy)
-    {
-	#pragma HLS UNROLL factor=2
-        winL.insert_pixel(bufL.getval(wy, c), wy, WIN - 1);
-        winR.insert_pixel(bufR.getval(wy, c), wy, WIN - 1);
-    }
-
-    winL.insert_pixel(pL, WIN - 1, WIN - 1);
-    winR.insert_pixel(pR, WIN - 1, WIN - 1);
-}
-
 static void compute_sad_cost_vector(
 	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
 	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
@@ -235,6 +209,74 @@ CopyPrevLR:
         prevCostT_col[d] = aggTB_arr[d];
     }
 }
+struct CostPacket
+{
+	bool valid;
+	cost_t curCost[DISP];
+};
+
+static CostPacket col_frontend(
+	    hls::stream<pix_t>& left,
+	    hls::stream<pix_t>& right,
+	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
+	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
+	    int r,
+	    int c,
+	    int cx)
+{
+#pragma HLS INLINE off
+	CostPacket pkt;
+	pkt.valid = false;
+
+    pix_t pL = left.read();
+    pix_t pR = right.read();
+
+	update_line_buffers(bufL, bufR, c, pL, pR);
+
+    if (r >= WIN - 1 && c >= DISP - 1)
+    {
+    	compute_sad_cost_vector(bufL, bufR, c, cx, pkt.curCost);
+    	pkt.valid = true;
+    }
+    return pkt;
+}
+
+static pix_t col_backend(
+		const CostPacket& pkt,
+		cost_t prevCostL[DISP],
+		cost_t prevCostT_col[DISP],
+		cost_t aggLR_arr[DISP],
+		cost_t aggTB_arr[DISP],
+		cost_t aggCost[DISP])
+{
+#pragma HLS INLINE off
+	pix_t outDisp = 0;
+
+	if (pkt.valid)
+	{
+        cost_t minPrevLR = reduce_min_vec(prevCostL);
+        cost_t minPrevTB = reduce_min_vec(prevCostT_col);
+
+        disp_t bestDisp = aggregate_paths_and_select(
+            pkt.curCost,
+            prevCostL,
+			prevCostT_col,
+            minPrevLR,
+            minPrevTB,
+            aggLR_arr,
+            aggTB_arr,
+            aggCost);
+
+        commit_prev_costs(
+            prevCostL,
+			prevCostT_col,
+            aggLR_arr,
+            aggTB_arr);
+
+        outDisp = bestDisp;
+	}
+    return outDisp;
+}
 
 /* --------------------------------------------------------- */
 /* Top kernel                                                */
@@ -331,46 +373,14 @@ Row:
 		#pragma HLS DEPENDENCE variable=bufL inter false
 		#pragma HLS DEPENDENCE variable=bufR inter false
 
-            /* Stream next pixels */
-            pix_t pL = left.read();
-            pix_t pR = right.read();
+        	CostPacket pkt = col_frontend(left, right, bufL, bufR,
+        			r, c, cx);
 
-            update_line_buffers(bufL, bufR, c, pL, pR);
-            update_windows(bufL, bufR, winL, winR, c, pL, pR);
-
-            /* Default output */
-            pix_t outDisp = 0;
-
-            if (r >= WIN - 1 && c >= DISP - 1)
-            {
-            	compute_sad_cost_vector(bufL, bufR, c, cx, curCost);
-
-                cost_t minPrevLR = reduce_min_vec(prevCostL);
-                cost_t minPrevTB = reduce_min_vec(prevCostT[c]);
-
-                disp_t bestDisp = aggregate_paths_and_select(
-                    curCost,
-                    prevCostL,
-                    prevCostT[c],
-                    minPrevLR,
-                    minPrevTB,
-                    aggLR_arr,
-                    aggTB_arr,
-                    aggCost);
-
-                commit_prev_costs(
-                    prevCostL,
-                    prevCostT[c],
-                    aggLR_arr,
-                    aggTB_arr);
-
-                if (c >= DISP - 1)
-                {
-                    outDisp = bestDisp;
-                }
-            }
+            pix_t outDisp = col_backend(pkt, prevCostL, prevCostT[c],
+            		aggLR_arr, aggTB_arr, aggCost);
 
             disp.write(outDisp);
+
         }
     }
 }
