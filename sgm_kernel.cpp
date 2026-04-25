@@ -13,6 +13,8 @@ static const cost_t INF_COST = cost_t(4095);
 /* --------------------------------------------------------- */
 /* Helper Function                                           */
 /* --------------------------------------------------------- */
+static constexpr int RIGHT_STRIPE_W = DISP + WIN - 1;
+
 static inline void update_line_buffers(
 		xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
 		xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
@@ -28,97 +30,82 @@ static inline void update_line_buffers(
     bufR.insert_bottom(pR, c);
 }
 
-static void compute_sad_cost_vector(
+static void update_sliding_windows(
 	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
 	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
-	    int c,
-	    int cx,
+		int c,
+		pix_t leftWin[WIN][WIN],
+		pix_t rightStripe[WIN][RIGHT_STRIPE_W])
+{
+#pragma HLS INLINE
+
+	ShiftLeftWin:
+	    for (int wy = 0; wy < WIN; ++wy)
+	    {
+		#pragma HLS UNROLL
+	        for (int wx = 0; wx < WIN - 1; ++wx)
+	        {
+		#pragma HLS UNROLL
+	            leftWin[wy][wx] = leftWin[wy][wx + 1];
+	        }
+	    }
+
+	InsertLeftCol:
+		for (int wy = 0; wy < WIN; ++wy)
+		{
+	    #pragma HLS UNROLL
+			leftWin[wy][WIN - 1] = bufL.getval(wy, c);
+	    }
+
+	ShiftRightStripe:
+		for (int wy = 0; wy < WIN; ++wy)
+		{
+		#pragma HLS UNROLL
+			for (int k = 0; k < RIGHT_STRIPE_W - 1; ++k)
+			{
+				rightStripe[wy][k] = rightStripe[wy][k + 1];
+		    }
+		}
+
+		InsertRightCol:
+		    for (int wy = 0; wy < WIN; ++wy)
+		    {
+		#pragma HLS UNROLL
+		        rightStripe[wy][RIGHT_STRIPE_W - 1] = bufR.getval(wy, c);
+		    }
+}
+
+static void compute_sad_cost_vector(
+		pix_t leftWin[WIN][WIN],
+		pix_t rightStripe[WIN][RIGHT_STRIPE_W],
 	    cost_t curCost[DISP])
 {
 #pragma HLS INLINE off
 
-	const int RIGHT_STRIPE_W = DISP + WIN - 1;
-
-	pix_t leftWin[WIN][WIN];
-	pix_t rightStripe[WIN][RIGHT_STRIPE_W];
-
-#pragma HLS ARRAY_PARTITION variable=leftWin complete dim=0
-#pragma HLS ARRAY_PARTITION variable=rightStripe complete dim=1
-#pragma HLS ARRAY_PARTITION variable=rightStripe complete dim=2
-
-	const bool interior = (c - cx >= 0) &&
-						(c + (WIN - 1 - cx) < IMG_W) &&
-						(c - (DISP - 1) - cx >= 0);
-	if(!interior)
+	SAD_Disparity:
+	for (int d = 0; d < DISP; ++d)
 	{
-		SAD_Loop_Border:
-		    for (int d = 0; d < DISP; d++)
-		    {
-			#pragma HLS PIPELINE II=1
-		        cost_t sum = 0;
-
-		    WinY:
-		        for (int wy = 0; wy < WIN; wy++)
-		        {
-		        WinX:
-		            for (int wx = 0; wx < WIN; wx++)
-		            {
-		                int colL  = c + wx - cx;
-		                int colR = c - d + wx - cx;
-
-		                pix_t lpx = 0;
-		                pix_t rpx = 0;
-
-		                if (colL >= 0 && colL < IMG_W) lpx = bufL.getval(wy, colL);
-		                if (colR >= 0 && colR < IMG_W) rpx = bufR.getval(wy, colR);
-
-		                sum += absdiff(lpx, rpx);
-		            }
-		        }
-		        curCost[d] = sum;
-		    }
-		    return;
-	}
-	/* Preload left window */
-	for(int wy = 0; wy < WIN; ++wy)
-	{
-		for(int wx = 0; wx < WIN; ++wx)
-		{
-		#pragma HLS UNROLL
-			const int colL = c + wx - cx;
-			leftWin[wy][wx] = bufL.getval(wy, colL);
-		}
-	}
-	/* Preload right strip */
-	const int rightBaseCol = c - (DISP - 1) - cx;
-	for(int wy = 0; wy < WIN; ++wy)
-	{
-		for(int k = 0; k < RIGHT_STRIPE_W; ++k)
-		{
-		#pragma HLS PIPELINE II=1
-			rightStripe[wy][k] = bufR.getval(wy, rightBaseCol + k);
-		}
-	}
-	SAD_Loop_Imterior:
-    for (int d = 0; d < DISP; ++d)
-    {
 	#pragma HLS PIPELINE II=1
-        cost_t sum = 0;
+		cost_t sum = 0;
 
+    SAD_WinY:
         for (int wy = 0; wy < WIN; ++wy)
         {
 		#pragma HLS UNROLL
+
+        SAD_WinX:
             for (int wx = 0; wx < WIN; ++wx)
             {
 			#pragma HLS UNROLL
-                const int rightIndex = (DISP - 1 - d) + wx;
+            	const int rightIndex = RIGHT_STRIPE_W - WIN - d + wx;
                 pix_t lpx = leftWin[wy][wx];
                 pix_t rpx = rightStripe[wy][rightIndex];
+
                 sum += absdiff(lpx, rpx);
             }
         }
         curCost[d] = sum;
-    }
+	}
 }
 
 static cost_t reduce_min_vec(const cost_t vec[DISP])
@@ -222,7 +209,9 @@ static CostPacket col_frontend(
 	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
 	    int r,
 	    int c,
-	    int cx)
+	    int cx,
+		pix_t leftWin[WIN][WIN],
+		pix_t rightStripe[WIN][RIGHT_STRIPE_W])
 {
 #pragma HLS INLINE off
 	CostPacket pkt;
@@ -232,11 +221,21 @@ static CostPacket col_frontend(
     pix_t pR = right.read();
 
 	update_line_buffers(bufL, bufR, c, pL, pR);
+	update_sliding_windows(bufL, bufR, c, leftWin, rightStripe);
 
-    if (r >= WIN - 1 && c >= DISP - 1)
+	const bool interior =
+	    (r >= WIN - 1) &&
+	    (c >= (DISP - 1) + cx) &&
+	    (c + (WIN - 1 - cx) < IMG_W);
+
+    if (interior)
     {
-    	compute_sad_cost_vector(bufL, bufR, c, cx, pkt.curCost);
+    	compute_sad_cost_vector(leftWin, rightStripe, pkt.curCost);
     	pkt.valid = true;
+    }
+    else
+    {
+    	pkt.valid = false;
     }
     return pkt;
 }
@@ -288,13 +287,46 @@ static void row_frontend(
 		CostPacket row_costs[IMG_W])
 {
 #pragma HLS INLINE off
+
+	pix_t leftWin[WIN][WIN];
+	pix_t rightStripe[WIN][RIGHT_STRIPE_W];
+
+#pragma HLS ARRAY_PARTITION variable=leftWin complete dim=0
+#pragma HLS ARRAY_PARTITION variable=rightStripe complete dim=1
+
+
+	InitRowCosts:
+	    for (int c = 0; c < IMG_W; ++c)
+	    {
+	        row_costs[c].valid = false;
+	    }
+
+	InitLeftWin:
+	for (int wy = 0; wy < WIN; ++wy) {
+	    for (int wx = 0; wx < WIN; ++wx) {
+	        leftWin[wy][wx] = 0;
+	    }
+	}
+
+	InitRightStripe:
+	for (int wy = 0; wy < WIN; ++wy) {
+	    for (int k = 0; k < RIGHT_STRIPE_W; ++k) {
+	        rightStripe[wy][k] = 0;
+	    }
+	}
+
 	for (int c = 0; c < IMG_W; ++c)
 	{
 	//#pragma HLS PIPELINE II=1
 	#pragma HLS DEPENDENCE variable=bufL inter false
 	#pragma HLS DEPENDENCE variable=bufR inter false
 
-		row_costs[c] = col_frontend(left, right, bufL, bufR, r, c, cx);
+		CostPacket pkt = col_frontend(left, right, bufL, bufR, r, c, cx,
+				leftWin, rightStripe);
+
+		int out_c = c - cx;
+		if(out_c >= 0)
+			row_costs[out_c] = pkt;
 	}
 }
 

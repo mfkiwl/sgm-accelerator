@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'row_backend'
 ================================================================
-* Date:           Thu Apr 23 07:43:50 2026
+* Date:           Sat Apr 25 10:00:32 2026
 
 * Version:        2023.1 (Build 3854077 on May  4 2023)
 * Project:        sgm_kernel
@@ -102,8 +102,8 @@
     +-----------------------+----------+----+---+----+------------+------------+
     |     Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +-----------------------+----------+----+---+----+------------+------------+
-    |add_ln313_fu_1866_p2   |         +|   0|  0|  14|           9|           1|
-    |icmp_ln313_fu_1860_p2  |      icmp|   0|  0|  14|           9|           9|
+    |add_ln345_fu_1866_p2   |         +|   0|  0|  14|           9|           1|
+    |icmp_ln345_fu_1860_p2  |      icmp|   0|  0|  14|           9|           9|
     +-----------------------+----------+----+---+----+------------+------------+
     |Total                  |          |   0|  0|  28|          18|          10|
     +-----------------------+----------+----+---+----+------------+------------+
@@ -228,18 +228,18 @@
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30_load_reg_2759                   |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31_addr_reg_2599                   |   9|   0|    9|          0|
     |pkt_valid_reg_2604                                                                                     |   1|   0|    1|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_39_reg_2569  |   9|   0|    9|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_40_reg_2664  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_41_reg_2669  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_42_reg_2674  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_43_reg_2679  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_44_reg_2684  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_45_reg_2714  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_46_reg_2719  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_47_reg_2724  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_48_reg_2729  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_49_reg_2734  |  12|   0|   12|          0|
-    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_50_reg_2764  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_43_reg_2569  |   9|   0|    9|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_44_reg_2664  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_45_reg_2669  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_46_reg_2674  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_47_reg_2679  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_48_reg_2684  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_49_reg_2714  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_50_reg_2719  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_51_reg_2724  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_52_reg_2729  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_53_reg_2734  |  12|   0|   12|          0|
+    |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_54_reg_2764  |  12|   0|   12|          0|
     |sgm_kernel_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_hls_stream_ap_uint_8_0_prevCostT_reg_2519     |   9|   0|    9|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1_addr_reg_2484                      |   9|   0|    9|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1_load_reg_2649                      |  12|   0|   12|          0|
@@ -261,7 +261,7 @@
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9_load_reg_2609                      |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_addr_reg_2489                        |   9|   0|    9|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_load_reg_2654                        |  12|   0|   12|          0|
-    |zext_ln313_reg_2209                                                                                    |   9|   0|   64|         55|
+    |zext_ln345_reg_2209                                                                                    |   9|   0|   64|         55|
     +-------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
     |Total                                                                                                  | 713|   0|  768|         55|
     +-------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
