@@ -277,89 +277,6 @@ static pix_t col_backend(
     return outDisp;
 }
 
-static void row_frontend(
-	    hls::stream<pix_t>& left,
-	    hls::stream<pix_t>& right,
-	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufL,
-	    xf::cv::LineBuffer<WIN, IMG_W, pix_t>& bufR,
-	    int r,
-	    int cx,
-		CostPacket row_costs[IMG_W])
-{
-#pragma HLS INLINE off
-
-	pix_t leftWin[WIN][WIN];
-	pix_t rightStripe[WIN][RIGHT_STRIPE_W];
-
-#pragma HLS ARRAY_PARTITION variable=leftWin complete dim=0
-#pragma HLS ARRAY_PARTITION variable=rightStripe complete dim=1
-
-
-	InitRowCosts:
-	    for (int c = 0; c < IMG_W; ++c)
-	    {
-	        row_costs[c].valid = false;
-	    }
-
-	InitLeftWin:
-	for (int wy = 0; wy < WIN; ++wy) {
-	    for (int wx = 0; wx < WIN; ++wx) {
-	        leftWin[wy][wx] = 0;
-	    }
-	}
-
-	InitRightStripe:
-	for (int wy = 0; wy < WIN; ++wy) {
-	    for (int k = 0; k < RIGHT_STRIPE_W; ++k) {
-	        rightStripe[wy][k] = 0;
-	    }
-	}
-
-	for (int c = 0; c < IMG_W; ++c)
-	{
-	//#pragma HLS PIPELINE II=1
-	#pragma HLS DEPENDENCE variable=bufL inter false
-	#pragma HLS DEPENDENCE variable=bufR inter false
-
-		CostPacket pkt = col_frontend(left, right, bufL, bufR, r, c, cx,
-				leftWin, rightStripe);
-
-		int out_c = c - cx;
-		if(out_c >= 0)
-			row_costs[out_c] = pkt;
-	}
-}
-
-static void row_backend(
-	CostPacket row_costs[IMG_W],
-    hls::stream<pix_t>& disp,
-    cost_t prevCostL[DISP],
-    cost_t prevCostT[IMG_W][DISP],
-    cost_t aggLR_arr[DISP],
-    cost_t aggTB_arr[DISP],
-    cost_t aggCost[DISP])
-{
-#pragma HLS INLINE off
-
-RowBackCol:
-    for (int c = 0; c < IMG_W; ++c)
-    {
-	//#pragma HLS PIPELINE II=1
-
-        CostPacket pkt = row_costs[c];
-
-        pix_t outDisp = col_backend(
-            pkt,
-            prevCostL,
-            prevCostT[c],
-            aggLR_arr,
-            aggTB_arr,
-            aggCost);
-
-        disp.write(outDisp);
-    }
-}
-
 /* --------------------------------------------------------- */
 /* Top kernel                                                */
 /* --------------------------------------------------------- */
@@ -402,15 +319,19 @@ void sgm_kernel(hls::stream<pix_t>& left,
     static cost_t aggCost[DISP];
 #pragma HLS ARRAY_PARTITION variable=aggCost complete dim=1
 
-    	static cost_t aggLR_arr[DISP];
-        static cost_t aggTB_arr[DISP];
-    #pragma HLS ARRAY_PARTITION variable=aggLR_arr complete dim=1
-    #pragma HLS ARRAY_PARTITION variable=aggTB_arr complete dim=1
+    static cost_t aggLR_arr[DISP];
+    static cost_t aggTB_arr[DISP];
+#pragma HLS ARRAY_PARTITION variable=aggLR_arr complete dim=1
+#pragma HLS ARRAY_PARTITION variable=aggTB_arr complete dim=1
+
+    pix_t leftWin[WIN][WIN];
+    pix_t rightStripe[WIN][RIGHT_STRIPE_W];
+
+#pragma HLS ARRAY_PARTITION variable=leftWin complete dim=0
+#pragma HLS ARRAY_PARTITION variable=rightStripe complete dim=1
 
     /* center offset */
     const int cx = WIN >> 1;
-
-    static CostPacket row_costs[IMG_W];
 
 Row:
     for (int r = 0; r < IMG_H; r++)
@@ -438,8 +359,44 @@ Row:
 			}
         }
 
-        row_frontend(left,right, bufL, bufR, r, cx, row_costs);
-        row_backend(row_costs, disp, prevCostL, prevCostT, aggLR_arr,
-        		aggTB_arr, aggCost);
+    	InitLeftWin:
+    	for (int wy = 0; wy < WIN; ++wy)
+    	{
+    	    for (int wx = 0; wx < WIN; ++wx)
+    	    {
+    	        leftWin[wy][wx] = 0;
+    	    }
+    	}
+
+    	InitRightStripe:
+    	for (int wy = 0; wy < WIN; ++wy)
+    	{
+    	    for (int k = 0; k < RIGHT_STRIPE_W; ++k)
+    	    {
+    	        rightStripe[wy][k] = 0;
+    	    }
+    	}
+
+    	for (int c = 0; c < IMG_W; ++c)
+    	{
+    	#pragma HLS PIPELINE II=8
+    	#pragma HLS DEPENDENCE variable=bufL inter false
+    	#pragma HLS DEPENDENCE variable=bufR inter false
+
+    		CostPacket pkt = col_frontend(left, right, bufL, bufR, r, c, cx,
+    				leftWin, rightStripe);
+
+    		int out_c = c - cx;
+    		if(out_c >= 0)
+    		{
+    			pix_t outDisp = col_backend(pkt, prevCostL, prevCostT[out_c],
+                aggLR_arr, aggTB_arr, aggCost);
+    			disp.write(outDisp);
+    		}
+    	}
+        for (int t = 0; t < cx; ++t)
+        {
+            disp.write(0);
+        }
     }
 }
