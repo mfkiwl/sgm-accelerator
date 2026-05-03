@@ -189,7 +189,7 @@ static void commit_prev_costs(
 CopyPrevLR:
     for (int d = 0; d < DISP; ++d)
     {
-	#pragma HLS PIPELINE II = 1
+	#pragma HLS UNROLL
         prevCostL[d]    = aggLR_arr[d];
         prevCostT_col[d] = aggTB_arr[d];
     }

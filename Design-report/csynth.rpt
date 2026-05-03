@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'sgm_kernel'
 ================================================================
 + General Information: 
-    * Date:           Sun May  3 21:05:45 2026
+    * Date:           Sun May  3 21:54:01 2026
     * Version:        2023.1 (Build 3854077 on May  4 2023)
     * Project:        sgm_kernel
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -15,34 +15,33 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
-    |                           Modules                          | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |          |    |           |            |     |
-    |                           & Loops                          | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM   | DSP|     FF    |     LUT    | URAM|
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
-    |+ sgm_kernel                                                |     -|  0.30|  4345060|  4.345e+07|         -|  4345061|     -|        no|  37 (30%)|   -|  3157 (8%)|  8606 (48%)|    -|
-    | + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1             |     -|  1.10|      962|  9.620e+03|         -|      962|     -|        no|         -|   -|   35 (~0%)|   149 (~0%)|    -|
-    |  o InitBuf_VITIS_LOOP_321_1                                |     -|  7.30|      960|  9.600e+03|         2|        1|   960|       yes|         -|   -|          -|           -|    -|
-    | o Row                                                      |     -|  7.30|  4344096|  4.344e+07|     45251|        -|    96|        no|         -|   -|          -|           -|    -|
-    |  + sgm_kernel_Pipeline_ResetCosts                          |     -|  3.89|       18|    180.000|         -|       18|     -|        no|         -|   -|    8 (~0%)|    41 (~0%)|    -|
-    |   o ResetCosts                                             |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|         -|   -|          -|           -|    -|
-    |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD                |     -|  1.26|     5122|  5.122e+04|         -|     5122|     -|        no|         -|   -|   30 (~0%)|   134 (~0%)|    -|
-    |   o InitTBRow_InitTBRowD                                   |     -|  7.30|     5120|  5.120e+04|         1|        1|  5120|       yes|         -|   -|          -|           -|    -|
-    |  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2        |     -|  1.59|       11|    110.000|         -|       11|     -|        no|         -|   -|   58 (~0%)|    189 (1%)|    -|
-    |   o InitLeftWin_VITIS_LOOP_388_2                           |     -|  7.30|        9|     90.000|         1|        1|     9|       yes|         -|   -|          -|           -|    -|
-    |  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3    |     -|  0.87|      104|  1.040e+03|         -|      104|     -|        no|         -|   -|   17 (~0%)|   137 (~0%)|    -|
-    |   o InitRightStripe_VITIS_LOOP_397_3                       |     -|  7.30|      102|  1.020e+03|         1|        1|   102|       yes|         -|   -|          -|           -|    -|
-    |  o VITIS_LOOP_403_4                                        |     -|  7.30|    40000|  4.000e+05|       125|        -|   320|        no|         -|   -|          -|           -|    -|
-    |   + col_frontend                                           |     -|  0.30|       42|    420.000|         -|       42|     -|        no|         -|   -|   406 (1%)|   1462 (8%)|    -|
-    |    + compute_sad_cost_vector                               |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|  262 (~0%)|   1074 (6%)|    -|
-    |     + compute_sad_cost_vector_Pipeline_SAD_Disparity       |     -|  0.30|       37|    370.000|         -|       37|     -|        no|         -|   -|  214 (~0%)|   1001 (5%)|    -|
-    |      o SAD_Disparity                                       |     -|  7.30|       35|    350.000|         5|        1|    32|       yes|         -|   -|          -|           -|    -|
-    |   + col_backend                                            |     -|  0.30|       78|    780.000|         -|       78|     -|        no|         -|   -|  1858 (5%)|  3296 (18%)|    -|
-    |    + aggregate_paths_and_select                            |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|  305 (~0%)|   1683 (9%)|    -|
-    |     + aggregate_paths_and_select_Pipeline_AggregationLoop  |     -|  0.30|       36|    360.000|         -|       36|     -|        no|         -|   -|  276 (~0%)|   1582 (8%)|    -|
-    |      o AggregationLoop                                     |     -|  7.30|       34|    340.000|         4|        1|    32|       yes|         -|   -|          -|           -|    -|
-    |    + commit_prev_costs                                     |     -|  0.84|       34|    340.000|         -|       34|     -|        no|         -|   -|  297 (~0%)|    341 (1%)|    -|
-    |     o CopyPrevLR                                           |     -|  7.30|       32|    320.000|         1|        1|    32|       yes|         -|   -|          -|           -|    -|
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+------------+-----+
+    |                           Modules                          | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |          |    |            |            |     |
+    |                           & Loops                          | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM   | DSP|     FF     |     LUT    | URAM|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+------------+-----+
+    |+ sgm_kernel                                                |     -|  0.30|  3239140|  3.239e+07|         -|  3239141|     -|        no|  37 (30%)|   -|  3904 (11%)|  8246 (46%)|    -|
+    | + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_306_1             |     -|  1.10|      962|  9.620e+03|         -|      962|     -|        no|         -|   -|    35 (~0%)|   149 (~0%)|    -|
+    |  o InitBuf_VITIS_LOOP_306_1                                |     -|  7.30|      960|  9.600e+03|         2|        1|   960|       yes|         -|   -|           -|           -|    -|
+    | o Row                                                      |     -|  7.30|  3238176|  3.238e+07|     33731|        -|    96|        no|         -|   -|           -|           -|    -|
+    |  + sgm_kernel_Pipeline_ResetCosts                          |     -|  3.89|       18|    180.000|         -|       18|     -|        no|         -|   -|     8 (~0%)|    41 (~0%)|    -|
+    |   o ResetCosts                                             |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|         -|   -|           -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD                |     -|  1.26|     5122|  5.122e+04|         -|     5122|     -|        no|         -|   -|    30 (~0%)|   134 (~0%)|    -|
+    |   o InitTBRow_InitTBRowD                                   |     -|  7.30|     5120|  5.120e+04|         1|        1|  5120|       yes|         -|   -|           -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_373_2        |     -|  1.59|       11|    110.000|         -|       11|     -|        no|         -|   -|    58 (~0%)|    189 (1%)|    -|
+    |   o InitLeftWin_VITIS_LOOP_373_2                           |     -|  7.30|        9|     90.000|         1|        1|     9|       yes|         -|   -|           -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_382_3    |     -|  0.87|      104|  1.040e+03|         -|      104|     -|        no|         -|   -|    17 (~0%)|   137 (~0%)|    -|
+    |   o InitRightStripe_VITIS_LOOP_382_3                       |     -|  7.30|      102|  1.020e+03|         1|        1|   102|       yes|         -|   -|           -|           -|    -|
+    |  o VITIS_LOOP_388_4                                        |     -|  7.30|    28480|  2.848e+05|        89|        -|   320|        no|         -|   -|           -|           -|    -|
+    |   + col_frontend                                           |     -|  0.30|       42|    420.000|         -|       42|     -|        no|         -|   -|    406 (1%)|   1462 (8%)|    -|
+    |    + compute_sad_cost_vector                               |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|   262 (~0%)|   1074 (6%)|    -|
+    |     + compute_sad_cost_vector_Pipeline_SAD_Disparity       |     -|  0.30|       37|    370.000|         -|       37|     -|        no|         -|   -|   214 (~0%)|   1001 (5%)|    -|
+    |      o SAD_Disparity                                       |     -|  7.30|       35|    350.000|         5|        1|    32|       yes|         -|   -|           -|           -|    -|
+    |   + col_backend                                            |     -|  0.30|       41|    410.000|         -|       41|     -|        no|         -|   -|   1941 (5%)|  3224 (18%)|    -|
+    |    + aggregate_paths_and_select                            |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|   305 (~0%)|   1683 (9%)|    -|
+    |     + aggregate_paths_and_select_Pipeline_AggregationLoop  |     -|  0.30|       36|    360.000|         -|       36|     -|        no|         -|   -|   276 (~0%)|   1582 (8%)|    -|
+    |      o AggregationLoop                                     |     -|  7.30|       34|    340.000|         4|        1|    32|       yes|         -|   -|           -|           -|    -|
+    |    + commit_prev_costs                                     |     -|  7.30|        0|      0.000|         -|        0|     -|        no|         -|   -|           -|           -|    -|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+------------+-----+
 
 
 ================================================================
@@ -96,27 +95,27 @@
 | Name                                                     | DSP | Pragma | Variable       | Op  | Impl   | Latency |
 +----------------------------------------------------------+-----+--------+----------------+-----+--------+---------+
 | + sgm_kernel                                             | 0   |        |                |     |        |         |
-|   r_2_fu_1054_p2                                         | -   |        | r_2            | add | fabric | 0       |
-|   add_ln403_fu_1113_p2                                   | -   |        | add_ln403      | add | fabric | 0       |
-|   add_ln421_fu_1177_p2                                   | -   |        | add_ln421      | add | fabric | 0       |
-|  + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1          | 0   |        |                |     |        |         |
-|    add_ln319_fu_166_p2                                   | -   |        | add_ln319      | add | fabric | 0       |
-|    add_ln319_1_fu_192_p2                                 | -   |        | add_ln319_1    | add | fabric | 0       |
-|    add_ln321_fu_206_p2                                   | -   |        | add_ln321      | add | fabric | 0       |
+|   r_2_fu_1564_p2                                         | -   |        | r_2            | add | fabric | 0       |
+|   add_ln388_fu_1623_p2                                   | -   |        | add_ln388      | add | fabric | 0       |
+|   add_ln406_fu_1687_p2                                   | -   |        | add_ln406      | add | fabric | 0       |
+|  + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_306_1          | 0   |        |                |     |        |         |
+|    add_ln304_fu_166_p2                                   | -   |        | add_ln304      | add | fabric | 0       |
+|    add_ln304_1_fu_192_p2                                 | -   |        | add_ln304_1    | add | fabric | 0       |
+|    add_ln306_fu_206_p2                                   | -   |        | add_ln306      | add | fabric | 0       |
 |  + sgm_kernel_Pipeline_ResetCosts                        | 0   |        |                |     |        |         |
-|    add_ln364_fu_338_p2                                   | -   |        | add_ln364      | add | fabric | 0       |
+|    add_ln349_fu_338_p2                                   | -   |        | add_ln349      | add | fabric | 0       |
 |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD              | 0   |        |                |     |        |         |
-|    add_ln373_fu_756_p2                                   | -   |        | add_ln373      | add | fabric | 0       |
-|    add_ln373_1_fu_784_p2                                 | -   |        | add_ln373_1    | add | fabric | 0       |
-|    add_ln377_fu_838_p2                                   | -   |        | add_ln377      | add | fabric | 0       |
-|  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2      | 0   |        |                |     |        |         |
-|    add_ln386_fu_230_p2                                   | -   |        | add_ln386      | add | fabric | 0       |
-|    add_ln386_1_fu_256_p2                                 | -   |        | add_ln386_1    | add | fabric | 0       |
-|    add_ln388_fu_300_p2                                   | -   |        | add_ln388      | add | fabric | 0       |
-|  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3  | 0   |        |                |     |        |         |
-|    add_ln395_fu_126_p2                                   | -   |        | add_ln395      | add | fabric | 0       |
-|    add_ln395_1_fu_152_p2                                 | -   |        | add_ln395_1    | add | fabric | 0       |
-|    add_ln397_fu_173_p2                                   | -   |        | add_ln397      | add | fabric | 0       |
+|    add_ln358_fu_756_p2                                   | -   |        | add_ln358      | add | fabric | 0       |
+|    add_ln358_1_fu_784_p2                                 | -   |        | add_ln358_1    | add | fabric | 0       |
+|    add_ln362_fu_838_p2                                   | -   |        | add_ln362      | add | fabric | 0       |
+|  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_373_2      | 0   |        |                |     |        |         |
+|    add_ln371_fu_230_p2                                   | -   |        | add_ln371      | add | fabric | 0       |
+|    add_ln371_1_fu_256_p2                                 | -   |        | add_ln371_1    | add | fabric | 0       |
+|    add_ln373_fu_300_p2                                   | -   |        | add_ln373      | add | fabric | 0       |
+|  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_382_3  | 0   |        |                |     |        |         |
+|    add_ln380_fu_126_p2                                   | -   |        | add_ln380      | add | fabric | 0       |
+|    add_ln380_1_fu_152_p2                                 | -   |        | add_ln380_1    | add | fabric | 0       |
+|    add_ln382_fu_173_p2                                   | -   |        | add_ln382      | add | fabric | 0       |
 |  + col_frontend                                          | 0   |        |                |     |        |         |
 |    add_ln61_fu_312_p2                                    | -   |        | add_ln61       | add | fabric | 0       |
 |   + compute_sad_cost_vector                              | 0   |        |                |     |        |         |
@@ -159,23 +158,21 @@
 |     add_i114_fu_761_p2                                   | -   |        | add_i114       | add | fabric | 0       |
 |     conv2_i_i_i89_fu_775_p2                              | -   |        | conv2_i_i_i89  | add | fabric | 0       |
 |    + aggregate_paths_and_select_Pipeline_AggregationLoop | 0   |        |                |     |        |         |
-|      d_6_fu_892_p2                                       | -   |        | d_6            | add | fabric | 0       |
-|      add_ln153_fu_1057_p2                                | -   |        | add_ln153      | add | fabric | 0       |
+|      d_5_fu_892_p2                                       | -   |        | d_5            | add | fabric | 0       |
+|      add_ln138_fu_1057_p2                                | -   |        | add_ln138      | add | fabric | 0       |
 |      p1_LR_fu_1071_p2                                    | -   |        | p1_LR          | add | fabric | 0       |
-|      add_ln154_fu_1173_p2                                | -   |        | add_ln154      | add | fabric | 0       |
+|      add_ln139_fu_1173_p2                                | -   |        | add_ln139      | add | fabric | 0       |
 |      p2_LR_fu_1187_p2                                    | -   |        | p2_LR          | add | fabric | 0       |
-|      add_ln162_fu_1553_p2                                | -   |        | add_ln162      | add | fabric | 0       |
-|      sub_ln162_fu_1601_p2                                | -   |        | sub_ln162      | sub | fabric | 0       |
-|      add_ln166_fu_1359_p2                                | -   |        | add_ln166      | add | fabric | 0       |
+|      add_ln147_fu_1553_p2                                | -   |        | add_ln147      | add | fabric | 0       |
+|      sub_ln147_fu_1601_p2                                | -   |        | sub_ln147      | sub | fabric | 0       |
+|      add_ln151_fu_1359_p2                                | -   |        | add_ln151      | add | fabric | 0       |
 |      p1_TB_fu_1373_p2                                    | -   |        | p1_TB          | add | fabric | 0       |
-|      add_ln167_fu_1469_p2                                | -   |        | add_ln167      | add | fabric | 0       |
+|      add_ln152_fu_1469_p2                                | -   |        | add_ln152      | add | fabric | 0       |
 |      p2_TB_fu_1483_p2                                    | -   |        | p2_TB          | add | fabric | 0       |
-|      add_ln175_fu_1592_p2                                | -   |        | add_ln175      | add | fabric | 0       |
-|      sub_ln175_fu_1829_p2                                | -   |        | sub_ln175      | sub | fabric | 0       |
-|      add_ln181_fu_2090_p2                                | -   |        | add_ln181      | add | fabric | 0       |
+|      add_ln160_fu_1592_p2                                | -   |        | add_ln160      | add | fabric | 0       |
+|      sub_ln160_fu_1829_p2                                | -   |        | sub_ln160      | sub | fabric | 0       |
+|      add_ln166_fu_2090_p2                                | -   |        | add_ln166      | add | fabric | 0       |
 |      sum2_fu_2104_p2                                     | -   |        | sum2           | add | fabric | 0       |
-|   + commit_prev_costs                                    | 0   |        |                |     |        |         |
-|     add_ln205_fu_1184_p2                                 | -   |        | add_ln205      | add | fabric | 0       |
 +----------------------------------------------------------+-----+--------+----------------+-----+--------+---------+
 
 
@@ -386,31 +383,29 @@
 | pipeline        | II=1                                             | sgm_kernel/sgm_kernel.cpp:85 in compute_sad_cost_vector                                                                      |
 | unroll          |                                                  | sgm_kernel/sgm_kernel.cpp:91 in compute_sad_cost_vector                                                                      |
 | unroll          |                                                  | sgm_kernel/sgm_kernel.cpp:96 in compute_sad_cost_vector                                                                      |
-| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:115 in reduce_min_vec                                                                              |
-| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:121 in reduce_min_vec                                                                              |
-| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:140 in aggregate_paths_and_select                                                                  |
-| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:151 in aggregate_paths_and_select                                                                  |
-| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:202 in commit_prev_costs                                                                           |
-| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:207 in commit_prev_costs                                                                           |
-| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:230 in col_frontend                                                                                |
-| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:267 in col_backend                                                                                 |
-| interface       | axis port=left register                          | sgm_kernel/sgm_kernel.cpp:308 in sgm_kernel, left                                                                            |
-| interface       | axis port=right register                         | sgm_kernel/sgm_kernel.cpp:309 in sgm_kernel, right                                                                           |
-| interface       | axis port=disp register                          | sgm_kernel/sgm_kernel.cpp:310 in sgm_kernel, disp                                                                            |
-| interface       | ap_ctrl_none port=return                         | sgm_kernel/sgm_kernel.cpp:311 in sgm_kernel, return                                                                          |
-| array_partition | variable=prevCostL complete dim=1                | sgm_kernel/sgm_kernel.cpp:330 in sgm_kernel, prevCostL                                                                       |
-| bind_storage    | variable=prevCostT type=RAM_2P impl=BRAM         | sgm_kernel/sgm_kernel.cpp:333 in sgm_kernel, prevCostT                                                                       |
-| array_partition | variable=prevCostT complete dim=2                | sgm_kernel/sgm_kernel.cpp:334 in sgm_kernel, prevCostT                                                                       |
-| array_partition | variable=aggCost complete dim=1                  | sgm_kernel/sgm_kernel.cpp:337 in sgm_kernel, aggCost                                                                         |
-| array_partition | variable=aggLR_arr complete dim=1                | sgm_kernel/sgm_kernel.cpp:341 in sgm_kernel, aggLR_arr                                                                       |
-| array_partition | variable=aggTB_arr complete dim=1                | sgm_kernel/sgm_kernel.cpp:342 in sgm_kernel, aggTB_arr                                                                       |
-| array_partition | variable=leftWin complete dim=0                  | sgm_kernel/sgm_kernel.cpp:347 in sgm_kernel, leftWin                                                                         |
-| array_partition | variable=rightStripe complete dim=1              | sgm_kernel/sgm_kernel.cpp:348 in sgm_kernel, rightStripe                                                                     |
-| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:366 in sgm_kernel                                                                                  |
-| loop_tripcount  | min=IMG_W max=IMG_W                              | sgm_kernel/sgm_kernel.cpp:375 in sgm_kernel                                                                                  |
-| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:379 in sgm_kernel                                                                                  |
-| dependence      | variable=bufL inter false                        | sgm_kernel/sgm_kernel.cpp:406 in sgm_kernel, bufL                                                                            |
-| dependence      | variable=bufR inter false                        | sgm_kernel/sgm_kernel.cpp:407 in sgm_kernel, bufR                                                                            |
+| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:125 in aggregate_paths_and_select                                                                  |
+| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:136 in aggregate_paths_and_select                                                                  |
+| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:187 in commit_prev_costs                                                                           |
+| unroll          |                                                  | sgm_kernel/sgm_kernel.cpp:192 in commit_prev_costs                                                                           |
+| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:215 in col_frontend                                                                                |
+| inline          | off                                              | sgm_kernel/sgm_kernel.cpp:252 in col_backend                                                                                 |
+| interface       | axis port=left register                          | sgm_kernel/sgm_kernel.cpp:293 in sgm_kernel, left                                                                            |
+| interface       | axis port=right register                         | sgm_kernel/sgm_kernel.cpp:294 in sgm_kernel, right                                                                           |
+| interface       | axis port=disp register                          | sgm_kernel/sgm_kernel.cpp:295 in sgm_kernel, disp                                                                            |
+| interface       | ap_ctrl_none port=return                         | sgm_kernel/sgm_kernel.cpp:296 in sgm_kernel, return                                                                          |
+| array_partition | variable=prevCostL complete dim=1                | sgm_kernel/sgm_kernel.cpp:315 in sgm_kernel, prevCostL                                                                       |
+| bind_storage    | variable=prevCostT type=RAM_2P impl=BRAM         | sgm_kernel/sgm_kernel.cpp:318 in sgm_kernel, prevCostT                                                                       |
+| array_partition | variable=prevCostT complete dim=2                | sgm_kernel/sgm_kernel.cpp:319 in sgm_kernel, prevCostT                                                                       |
+| array_partition | variable=aggCost complete dim=1                  | sgm_kernel/sgm_kernel.cpp:322 in sgm_kernel, aggCost                                                                         |
+| array_partition | variable=aggLR_arr complete dim=1                | sgm_kernel/sgm_kernel.cpp:326 in sgm_kernel, aggLR_arr                                                                       |
+| array_partition | variable=aggTB_arr complete dim=1                | sgm_kernel/sgm_kernel.cpp:327 in sgm_kernel, aggTB_arr                                                                       |
+| array_partition | variable=leftWin complete dim=0                  | sgm_kernel/sgm_kernel.cpp:332 in sgm_kernel, leftWin                                                                         |
+| array_partition | variable=rightStripe complete dim=1              | sgm_kernel/sgm_kernel.cpp:333 in sgm_kernel, rightStripe                                                                     |
+| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:351 in sgm_kernel                                                                                  |
+| loop_tripcount  | min=IMG_W max=IMG_W                              | sgm_kernel/sgm_kernel.cpp:360 in sgm_kernel                                                                                  |
+| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:364 in sgm_kernel                                                                                  |
+| dependence      | variable=bufL inter false                        | sgm_kernel/sgm_kernel.cpp:391 in sgm_kernel, bufL                                                                            |
+| dependence      | variable=bufR inter false                        | sgm_kernel/sgm_kernel.cpp:392 in sgm_kernel, bufR                                                                            |
 | inline          |                                                  | sgm_kernel/sgm_params.hpp:20 in absdiff                                                                                      |
 | inline          |                                                  | sgm_kernel/sgm_params.hpp:26 in sat12                                                                                        |
 +-----------------+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
