@@ -118,7 +118,7 @@ static cost_t reduce_min_vec(const cost_t vec[DISP])
 MinLoop:
     for (int d = 0; d < DISP; d++)
     {
-	#pragma HLS UNROLL factor=2
+	#pragma HLS PIPELINE II = 1
         if (vec[d] < minVal)
             minVal = vec[d];
     }
@@ -143,7 +143,7 @@ static disp_t aggregate_paths_and_select(
 AggregationLoop:
     for (int d = 0; d < DISP; d++)
     {
-#pragma HLS UNROLL factor=2
+	#pragma HLS PIPELINE II = 1
         cost_t p0_LR = prevCostL[d];
         cost_t p1_LR = (d > 0) ? sat12(prevCostL[d - 1] + P1) : INF_COST;
         cost_t p2_LR = (d < DISP - 1) ? sat12(prevCostL[d + 1] + P1) : INF_COST;
@@ -193,7 +193,7 @@ static void commit_prev_costs(
 CopyPrevLR:
     for (int d = 0; d < DISP; ++d)
     {
-#pragma HLS UNROLL factor=2
+	#pragma HLS PIPELINE II = 1
         prevCostL[d]    = aggLR_arr[d];
         prevCostT_col[d] = aggTB_arr[d];
     }
@@ -313,7 +313,7 @@ void sgm_kernel(hls::stream<pix_t>& left,
 #pragma HLS ARRAY_PARTITION variable=prevCostL complete dim=1
 
     static cost_t prevCostT[IMG_W][DISP];
-#pragma HLS bind_storage variable=prevCostT type=RAM_1P impl=BRAM
+#pragma HLS bind_storage variable=prevCostT type=RAM_2P impl=BRAM
 #pragma HLS ARRAY_PARTITION variable=prevCostT complete dim=2
 
     static cost_t aggCost[DISP];

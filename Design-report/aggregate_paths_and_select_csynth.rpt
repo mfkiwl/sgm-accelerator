@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'aggregate_paths_and_select'
 ================================================================
-* Date:           Mon Apr 27 20:22:03 2026
+* Date:           Sun May  3 20:34:03 2026
 
 * Version:        2023.1 (Build 3854077 on May  4 2023)
 * Project:        sgm_kernel
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  |  10.00 ns|  7.035 ns|     2.70 ns|
+    |ap_clk  |  10.00 ns|  6.996 ns|     2.70 ns|
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
     |   min   |   max   |    min   |    max   | min | max |   Type  |
     +---------+---------+----------+----------+-----+-----+---------+
-    |       23|       23|  0.230 us|  0.230 us|   23|   23|       no|
+    |       39|       39|  0.390 us|  0.390 us|   39|   39|       no|
     +---------+---------+----------+----------+-----+-----+---------+
 
     + Detail: 
@@ -38,7 +38,7 @@
         |                                                                |                                                     |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
         |                            Instance                            |                        Module                       |   min   |   max   |    min   |    max   | min | max |   Type  |
         +----------------------------------------------------------------+-----------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |       20|       20|  0.200 us|  0.200 us|   20|   20|       no|
+        |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |       36|       36|  0.360 us|  0.360 us|   36|   36|       no|
         +----------------------------------------------------------------+-----------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
 
         * Loop: 
@@ -56,16 +56,16 @@
 |DSP              |        -|   -|      -|      -|    -|
 |Expression       |        -|   -|      0|     76|    -|
 |FIFO             |        -|   -|      -|      -|    -|
-|Instance         |        -|   -|    415|   2262|    -|
+|Instance         |        -|   -|    240|   1516|    -|
 |Memory           |        -|   -|      -|      -|    -|
 |Multiplexer      |        -|   -|      -|     25|    -|
 |Register         |        -|   -|     29|      -|    -|
 +-----------------+---------+----+-------+-------+-----+
-|Total            |        0|   0|    444|   2363|    0|
+|Total            |        0|   0|    269|   1617|    0|
 +-----------------+---------+----+-------+-------+-----+
 |Available        |      120|  80|  35200|  17600|    0|
 +-----------------+---------+----+-------+-------+-----+
-|Utilization (%)  |        0|   0|      1|     13|    0|
+|Utilization (%)  |        0|   0|     ~0|      9|    0|
 +-----------------+---------+----+-------+-------+-----+
 
 + Detail: 
@@ -73,9 +73,9 @@
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
     |                            Instance                            |                        Module                       | BRAM_18K| DSP|  FF |  LUT | URAM|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
-    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |        0|   0|  415|  2262|    0|
+    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |        0|   0|  240|  1516|    0|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
-    |Total                                                           |                                                     |        0|   0|  415|  2262|    0|
+    |Total                                                           |                                                     |        0|   0|  240|  1516|    0|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
 
     * DSP: 
@@ -141,9 +141,6 @@
 |curCost_address0                                                               |  out|    5|   ap_memory|                                                                 curCost|         array|
 |curCost_ce0                                                                    |  out|    1|   ap_memory|                                                                 curCost|         array|
 |curCost_q0                                                                     |   in|   11|   ap_memory|                                                                 curCost|         array|
-|curCost_address1                                                               |  out|    5|   ap_memory|                                                                 curCost|         array|
-|curCost_ce1                                                                    |  out|    1|   ap_memory|                                                                 curCost|         array|
-|curCost_q1                                                                     |   in|   11|   ap_memory|                                                                 curCost|         array|
 |prevCostT_col_0_val                                                            |   in|   12|     ap_none|                                                     prevCostT_col_0_val|        scalar|
 |prevCostT_col_1_val                                                            |   in|   12|     ap_none|                                                     prevCostT_col_1_val|        scalar|
 |prevCostT_col_2_val                                                            |   in|   12|     ap_none|                                                     prevCostT_col_2_val|        scalar|
@@ -179,163 +176,163 @@
 |minPrevLR_val                                                                  |   in|   12|     ap_none|                                                           minPrevLR_val|        scalar|
 |minPrevTB_val                                                                  |   in|   12|     ap_none|                                                           minPrevTB_val|        scalar|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_7            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_7|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_5            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_5|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_3            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_3|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_14         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_14|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_16         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_16|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_18         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_18|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_20         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_20|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_22         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_22|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_24         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_24|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_26         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_26|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_28         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_28|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_30         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_30|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_8            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_8|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_7            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_7|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_6            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_6|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_5            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_5|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_4            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_4|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_3            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_3|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_2            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_2|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1            |   in|   12|     ap_none|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL              |   in|   12|     ap_none|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_11         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_11|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_13         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_13|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_14         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_14|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_15         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_15|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_16         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_16|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_17         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_17|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_18         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_18|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_19         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_19|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_20         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_20|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_21         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_21|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_22         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_22|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_23         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_23|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_24         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_24|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_25         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_25|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_26         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_26|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_27         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_27|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_28         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_28|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_29         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_29|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_30         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_30|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_31         |   in|   12|     ap_none|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_31|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_9            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_9|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_9_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_9|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_9|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_8|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_7            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_7|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_7_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_7|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_6            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_6|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_6_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_6|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_5|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_4            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_4|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_4_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_4|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_3|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_2            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_2|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_2_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_2|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr              |  out|   12|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_ap_vld       |  out|    1|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr              |  out|   12|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr|       pointer|
-|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_ap_vld       |  out|    1|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_11         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_11|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_11_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_11|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_13         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_13|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_13_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_13|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_14|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_15         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_15|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_15_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_15|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_16|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_17         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_17|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_17_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_17|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_18|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_19         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_19|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_19_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_19|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_20|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_21         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_21|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_21_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_21|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_22|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_23         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_23|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_23_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_23|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_24|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_25         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_25|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_25_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_25|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_26|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_27         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_27|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_27_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_27|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_28|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_29         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_29|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_29_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_29|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29|       pointer|
-|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_30|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_31         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_31|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_31_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_31|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_7|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_6|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_5|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_4|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_3|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_2|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1            |  out|   12|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1_ap_vld     |  out|    1|      ap_vld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_1|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr              |  out|   12|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr|       pointer|
+|sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_ap_vld       |  out|    1|      ap_vld|       sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_10|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_11|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_12|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_13|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_14|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_15|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_16|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_17|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_18|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_19|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_20|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_21|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_22|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_23|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_24|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_25|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_26|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_27|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_28|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30|       pointer|
+|p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_31         |  out|   12|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_31|       pointer|
 |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_31_ap_vld  |  out|    1|      ap_vld|  p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_31|       pointer|
 +-------------------------------------------------------------------------------+-----+-----+------------+------------------------------------------------------------------------+--------------+

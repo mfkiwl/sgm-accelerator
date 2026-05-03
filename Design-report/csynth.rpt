@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'sgm_kernel'
 ================================================================
 + General Information: 
-    * Date:           Mon Apr 27 20:22:05 2026
+    * Date:           Sun May  3 20:34:04 2026
     * Version:        2023.1 (Build 3854077 on May  4 2023)
     * Project:        sgm_kernel
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -15,38 +15,38 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+-------------+-----+
-    |                           Modules                          | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |          |    |            |             |     |
-    |                           & Loops                          | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM   | DSP|     FF     |     LUT     | URAM|
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+-------------+-----+
-    |+ sgm_kernel                                                |     -|  0.26|  3914980|  3.915e+07|         -|  3914981|     -|        no|  36 (30%)|   -|  4469 (12%)|  10830 (61%)|    -|
-    | + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1             |     -|  1.10|      962|  9.620e+03|         -|      962|     -|        no|         -|   -|    35 (~0%)|    149 (~0%)|    -|
-    |  o InitBuf_VITIS_LOOP_304_1                                |     -|  7.30|      960|  9.600e+03|         2|        1|   960|       yes|         -|   -|           -|            -|    -|
-    | o Row                                                      |     -|  7.30|  3914016|  3.914e+07|     40771|        -|    96|        no|         -|   -|           -|            -|    -|
-    |  + sgm_kernel_Pipeline_ResetCosts                          |     -|  3.89|       18|    180.000|         -|       18|     -|        no|         -|   -|     8 (~0%)|     41 (~0%)|    -|
-    |   o ResetCosts                                             |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|         -|   -|           -|            -|    -|
-    |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD                |     -|  1.26|     5122|  5.122e+04|         -|     5122|     -|        no|         -|   -|    30 (~0%)|    134 (~0%)|    -|
-    |   o InitTBRow_InitTBRowD                                   |     -|  7.30|     5120|  5.120e+04|         1|        1|  5120|       yes|         -|   -|           -|            -|    -|
-    |  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2        |     -|  1.59|       11|    110.000|         -|       11|     -|        no|         -|   -|    58 (~0%)|     189 (1%)|    -|
-    |   o InitLeftWin_VITIS_LOOP_367_2                           |     -|  7.30|        9|     90.000|         1|        1|     9|       yes|         -|   -|           -|            -|    -|
-    |  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3    |     -|  0.87|      104|  1.040e+03|         -|      104|     -|        no|         -|   -|    17 (~0%)|    137 (~0%)|    -|
-    |   o InitRightStripe_VITIS_LOOP_376_3                       |     -|  7.30|      102|  1.020e+03|         1|        1|   102|       yes|         -|   -|           -|            -|    -|
-    |  o VITIS_LOOP_382_4                                        |     -|  7.30|    35520|  3.552e+05|       111|        -|   320|        no|         -|   -|           -|            -|    -|
-    |   + col_frontend                                           |     -|  0.30|       42|    420.000|         -|       42|     -|        no|         -|   -|    406 (1%)|    1462 (8%)|    -|
-    |    + compute_sad_cost_vector                               |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|   262 (~0%)|    1074 (6%)|    -|
-    |     + compute_sad_cost_vector_Pipeline_SAD_Disparity       |     -|  0.30|       37|    370.000|         -|       37|     -|        no|         -|   -|   214 (~0%)|    1001 (5%)|    -|
-    |      o SAD_Disparity                                       |     -|  7.30|       35|    350.000|         5|        1|    32|       yes|         -|   -|           -|            -|    -|
-    |   + col_backend                                            |     -|  0.26|       64|    640.000|         -|       64|     -|        no|         -|   -|   2553 (7%)|   5648 (32%)|    -|
-    |    + reduce_min_vec                                        |     -|  1.22|       18|    180.000|         -|       18|     -|        no|         -|   -|    45 (~0%)|     399 (2%)|    -|
-    |     o MinLoop                                              |     -|  7.30|       16|    160.000|         2|        1|    16|       yes|         -|   -|           -|            -|    -|
-    |    + reduce_min_vec                                        |     -|  1.22|       18|    180.000|         -|       18|     -|        no|         -|   -|    45 (~0%)|     399 (2%)|    -|
-    |     o MinLoop                                              |     -|  7.30|       16|    160.000|         2|        1|    16|       yes|         -|   -|           -|            -|    -|
-    |    + aggregate_paths_and_select                            |     -|  0.26|       23|    230.000|         -|       23|     -|        no|         -|   -|    444 (1%)|   2363 (13%)|    -|
-    |     + aggregate_paths_and_select_Pipeline_AggregationLoop  |     -|  0.26|       20|    200.000|         -|       20|     -|        no|         -|   -|    415 (1%)|   2262 (12%)|    -|
-    |      o AggregationLoop                                     |     -|  7.30|       18|    180.000|         4|        1|    16|       yes|         -|   -|           -|            -|    -|
-    |    + commit_prev_costs                                     |     -|  3.89|       18|    180.000|         -|       18|     -|        no|         -|   -|    425 (1%)|     979 (5%)|    -|
-    |     o CopyPrevLR                                           |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|         -|   -|           -|            -|    -|
-    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+------------+-------------+-----+
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
+    |                           Modules                          | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |          |    |           |            |     |
+    |                           & Loops                          | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|   BRAM   | DSP|     FF    |     LUT    | URAM|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
+    |+ sgm_kernel                                                |     -|  0.26|  5450980|  5.451e+07|         -|  5450981|     -|        no|  36 (30%)|   -|  3060 (8%)|  8954 (50%)|    -|
+    | + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1             |     -|  1.10|      962|  9.620e+03|         -|      962|     -|        no|         -|   -|   35 (~0%)|   149 (~0%)|    -|
+    |  o InitBuf_VITIS_LOOP_304_1                                |     -|  7.30|      960|  9.600e+03|         2|        1|   960|       yes|         -|   -|          -|           -|    -|
+    | o Row                                                      |     -|  7.30|  5450016|  5.450e+07|     56771|        -|    96|        no|         -|   -|          -|           -|    -|
+    |  + sgm_kernel_Pipeline_ResetCosts                          |     -|  3.89|       18|    180.000|         -|       18|     -|        no|         -|   -|    8 (~0%)|    41 (~0%)|    -|
+    |   o ResetCosts                                             |     -|  7.30|       16|    160.000|         1|        1|    16|       yes|         -|   -|          -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD                |     -|  1.26|     5122|  5.122e+04|         -|     5122|     -|        no|         -|   -|   30 (~0%)|   134 (~0%)|    -|
+    |   o InitTBRow_InitTBRowD                                   |     -|  7.30|     5120|  5.120e+04|         1|        1|  5120|       yes|         -|   -|          -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2        |     -|  1.59|       11|    110.000|         -|       11|     -|        no|         -|   -|   58 (~0%)|    189 (1%)|    -|
+    |   o InitLeftWin_VITIS_LOOP_367_2                           |     -|  7.30|        9|     90.000|         1|        1|     9|       yes|         -|   -|          -|           -|    -|
+    |  + sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3    |     -|  0.87|      104|  1.040e+03|         -|      104|     -|        no|         -|   -|   17 (~0%)|   137 (~0%)|    -|
+    |   o InitRightStripe_VITIS_LOOP_376_3                       |     -|  7.30|      102|  1.020e+03|         1|        1|   102|       yes|         -|   -|          -|           -|    -|
+    |  o VITIS_LOOP_382_4                                        |     -|  7.30|    51520|  5.152e+05|       161|        -|   320|        no|         -|   -|          -|           -|    -|
+    |   + col_frontend                                           |     -|  0.30|       42|    420.000|         -|       42|     -|        no|         -|   -|   406 (1%)|   1462 (8%)|    -|
+    |    + compute_sad_cost_vector                               |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|  262 (~0%)|   1074 (6%)|    -|
+    |     + compute_sad_cost_vector_Pipeline_SAD_Disparity       |     -|  0.30|       37|    370.000|         -|       37|     -|        no|         -|   -|  214 (~0%)|   1001 (5%)|    -|
+    |      o SAD_Disparity                                       |     -|  7.30|       35|    350.000|         5|        1|    32|       yes|         -|   -|          -|           -|    -|
+    |   + col_backend                                            |     -|  0.26|      114|  1.140e+03|         -|      114|     -|        no|         -|   -|  1818 (5%)|  3685 (20%)|    -|
+    |    + reduce_min_vec                                        |     -|  0.26|       34|    340.000|         -|       34|     -|        no|         -|   -|   20 (~0%)|    248 (1%)|    -|
+    |     o MinLoop                                              |     -|  7.30|       32|    320.000|         1|        1|    32|       yes|         -|   -|          -|           -|    -|
+    |    + reduce_min_vec                                        |     -|  0.26|       34|    340.000|         -|       34|     -|        no|         -|   -|   20 (~0%)|    248 (1%)|    -|
+    |     o MinLoop                                              |     -|  7.30|       32|    320.000|         1|        1|    32|       yes|         -|   -|          -|           -|    -|
+    |    + aggregate_paths_and_select                            |     -|  0.30|       39|    390.000|         -|       39|     -|        no|         -|   -|  269 (~0%)|   1617 (9%)|    -|
+    |     + aggregate_paths_and_select_Pipeline_AggregationLoop  |     -|  0.30|       36|    360.000|         -|       36|     -|        no|         -|   -|  240 (~0%)|   1516 (8%)|    -|
+    |      o AggregationLoop                                     |     -|  7.30|       34|    340.000|         4|        1|    32|       yes|         -|   -|          -|           -|    -|
+    |    + commit_prev_costs                                     |     -|  0.84|       34|    340.000|         -|       34|     -|        no|         -|   -|  297 (~0%)|    341 (1%)|    -|
+    |     o CopyPrevLR                                           |     -|  7.30|       32|    320.000|         1|        1|    32|       yes|         -|   -|          -|           -|    -|
+    +------------------------------------------------------------+------+------+---------+-----------+----------+---------+------+----------+----------+----+-----------+------------+-----+
 
 
 ================================================================
@@ -100,9 +100,9 @@
 | Name                                                     | DSP | Pragma | Variable       | Op  | Impl   | Latency |
 +----------------------------------------------------------+-----+--------+----------------+-----+--------+---------+
 | + sgm_kernel                                             | 0   |        |                |     |        |         |
-|   r_2_fu_1424_p2                                         | -   |        | r_2            | add | fabric | 0       |
-|   add_ln382_fu_1483_p2                                   | -   |        | add_ln382      | add | fabric | 0       |
-|   add_ln391_fu_1547_p2                                   | -   |        | add_ln391      | add | fabric | 0       |
+|   r_2_fu_1008_p2                                         | -   |        | r_2            | add | fabric | 0       |
+|   add_ln382_fu_1067_p2                                   | -   |        | add_ln382      | add | fabric | 0       |
+|   add_ln391_fu_1131_p2                                   | -   |        | add_ln391      | add | fabric | 0       |
 |  + sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1          | 0   |        |                |     |        |         |
 |    add_ln302_fu_166_p2                                   | -   |        | add_ln302      | add | fabric | 0       |
 |    add_ln302_1_fu_192_p2                                 | -   |        | add_ln302_1    | add | fabric | 0       |
@@ -110,9 +110,9 @@
 |  + sgm_kernel_Pipeline_ResetCosts                        | 0   |        |                |     |        |         |
 |    add_ln343_fu_338_p2                                   | -   |        | add_ln343      | add | fabric | 0       |
 |  + sgm_kernel_Pipeline_InitTBRow_InitTBRowD              | 0   |        |                |     |        |         |
-|    add_ln352_fu_628_p2                                   | -   |        | add_ln352      | add | fabric | 0       |
-|    add_ln352_1_fu_656_p2                                 | -   |        | add_ln352_1    | add | fabric | 0       |
-|    add_ln356_fu_710_p2                                   | -   |        | add_ln356      | add | fabric | 0       |
+|    add_ln352_fu_756_p2                                   | -   |        | add_ln352      | add | fabric | 0       |
+|    add_ln352_1_fu_784_p2                                 | -   |        | add_ln352_1    | add | fabric | 0       |
+|    add_ln356_fu_838_p2                                   | -   |        | add_ln356      | add | fabric | 0       |
 |  + sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2      | 0   |        |                |     |        |         |
 |    add_ln365_fu_230_p2                                   | -   |        | add_ln365      | add | fabric | 0       |
 |    add_ln365_1_fu_256_p2                                 | -   |        | add_ln365_1    | add | fabric | 0       |
@@ -157,47 +157,33 @@
 |      add_ln106_6_fu_714_p2                               | -   |        | add_ln106_6    | add | fabric | 0       |
 |      curCost_d0                                          | -   |        | sum_1          | add | fabric | 0       |
 |  + col_backend                                           | 0   |        |                |     |        |         |
-|   + reduce_min_vec (grp_reduce_min_vec_fu_771)           | 0   |        |                |     |        |         |
-|     add_ln119_fu_459_p2                                  | -   |        | add_ln119      | add | fabric | 0       |
-|   + reduce_min_vec (grp_reduce_min_vec_fu_807)           | 0   |        |                |     |        |         |
-|     add_ln119_fu_459_p2                                  | -   |        | add_ln119      | add | fabric | 0       |
+|   + reduce_min_vec (grp_reduce_min_vec_fu_723)           | 0   |        |                |     |        |         |
+|     add_ln119_fu_311_p2                                  | -   |        | add_ln119      | add | fabric | 0       |
+|   + reduce_min_vec (grp_reduce_min_vec_fu_759)           | 0   |        |                |     |        |         |
+|     add_ln119_fu_311_p2                                  | -   |        | add_ln119      | add | fabric | 0       |
 |   + aggregate_paths_and_select                           | 0   |        |                |     |        |         |
 |     add_i279_fu_725_p2                                   | -   |        | add_i279       | add | fabric | 0       |
 |     conv2_i_i_i254_fu_739_p2                             | -   |        | conv2_i_i_i254 | add | fabric | 0       |
 |     add_i108_fu_749_p2                                   | -   |        | add_i108       | add | fabric | 0       |
 |     conv2_i_i_i83_fu_763_p2                              | -   |        | conv2_i_i_i83  | add | fabric | 0       |
 |    + aggregate_paths_and_select_Pipeline_AggregationLoop | 0   |        |                |     |        |         |
-|      add_ln149_fu_1008_p2                                | -   |        | add_ln149      | add | fabric | 0       |
-|      p2_LR_fu_1022_p2                                    | -   |        | p2_LR          | add | fabric | 0       |
-|      add_ln148_fu_1176_p2                                | -   |        | add_ln148      | add | fabric | 0       |
-|      p1_LR_fu_1190_p2                                    | -   |        | p1_LR          | add | fabric | 0       |
-|      add_ln161_fu_1276_p2                                | -   |        | add_ln161      | add | fabric | 0       |
-|      p1_TB_fu_1290_p2                                    | -   |        | p1_TB          | add | fabric | 0       |
-|      add_ln157_fu_1616_p2                                | -   |        | add_ln157      | add | fabric | 0       |
-|      sub_ln157_fu_1857_p2                                | -   |        | sub_ln157      | sub | fabric | 0       |
-|      add_ln162_fu_1398_p2                                | -   |        | add_ln162      | add | fabric | 0       |
-|      p2_TB_fu_1412_p2                                    | -   |        | p2_TB          | add | fabric | 0       |
-|      add_ln170_fu_1655_p2                                | -   |        | add_ln170      | add | fabric | 0       |
-|      sub_ln170_fu_1893_p2                                | -   |        | sub_ln170      | sub | fabric | 0       |
-|      add_ln173_fu_1934_p2                                | -   |        | add_ln173      | add | fabric | 0       |
-|      sum2_fu_1948_p2                                     | -   |        | sum2           | add | fabric | 0       |
-|      add_ln148_1_fu_1664_p2                              | -   |        | add_ln148_1    | add | fabric | 0       |
-|      p1_LR_2_fu_1678_p2                                  | -   |        | p1_LR_2        | add | fabric | 0       |
-|      d_7_fu_1432_p2                                      | -   |        | d_7            | add | fabric | 0       |
-|      add_ln161_1_fu_1711_p2                              | -   |        | add_ln161_1    | add | fabric | 0       |
-|      p1_TB_3_fu_1725_p2                                  | -   |        | p1_TB_3        | add | fabric | 0       |
-|      add_ln149_1_fu_1741_p2                              | -   |        | add_ln149_1    | add | fabric | 0       |
-|      p2_LR_2_fu_1755_p2                                  | -   |        | p2_LR_2        | add | fabric | 0       |
-|      add_ln162_1_fu_1771_p2                              | -   |        | add_ln162_1    | add | fabric | 0       |
-|      p2_TB_17_fu_1785_p2                                 | -   |        | p2_TB_17       | add | fabric | 0       |
-|      add_ln157_1_fu_2171_p2                              | -   |        | add_ln157_1    | add | fabric | 0       |
-|      sub_ln157_1_fu_2181_p2                              | -   |        | sub_ln157_1    | sub | fabric | 0       |
-|      add_ln170_1_fu_2228_p2                              | -   |        | add_ln170_1    | add | fabric | 0       |
-|      sub_ln170_1_fu_2238_p2                              | -   |        | sub_ln170_1    | sub | fabric | 0       |
-|      add_ln173_1_fu_2498_p2                              | -   |        | add_ln173_1    | add | fabric | 0       |
-|      sum2_2_fu_2512_p2                                   | -   |        | sum2_2         | add | fabric | 0       |
+|      d_7_fu_854_p2                                       | -   |        | d_7            | add | fabric | 0       |
+|      add_ln148_fu_1019_p2                                | -   |        | add_ln148      | add | fabric | 0       |
+|      p1_LR_fu_1033_p2                                    | -   |        | p1_LR          | add | fabric | 0       |
+|      add_ln149_fu_1135_p2                                | -   |        | add_ln149      | add | fabric | 0       |
+|      p2_LR_fu_1149_p2                                    | -   |        | p2_LR          | add | fabric | 0       |
+|      add_ln157_fu_1515_p2                                | -   |        | add_ln157      | add | fabric | 0       |
+|      sub_ln157_fu_1563_p2                                | -   |        | sub_ln157      | sub | fabric | 0       |
+|      add_ln161_fu_1321_p2                                | -   |        | add_ln161      | add | fabric | 0       |
+|      p1_TB_fu_1335_p2                                    | -   |        | p1_TB          | add | fabric | 0       |
+|      add_ln162_fu_1431_p2                                | -   |        | add_ln162      | add | fabric | 0       |
+|      p2_TB_fu_1445_p2                                    | -   |        | p2_TB          | add | fabric | 0       |
+|      add_ln170_fu_1554_p2                                | -   |        | add_ln170      | add | fabric | 0       |
+|      sub_ln170_fu_1791_p2                                | -   |        | sub_ln170      | sub | fabric | 0       |
+|      add_ln173_fu_1832_p2                                | -   |        | add_ln173      | add | fabric | 0       |
+|      sum2_fu_1846_p2                                     | -   |        | sum2           | add | fabric | 0       |
 |   + commit_prev_costs                                    | 0   |        |                |     |        |         |
-|     add_ln194_fu_1932_p2                                 | -   |        | add_ln194      | add | fabric | 0       |
+|     add_ln194_fu_1184_p2                                 | -   |        | add_ln194      | add | fabric | 0       |
 +----------------------------------------------------------+-----+--------+----------------+-----+--------+---------+
 
 
@@ -215,39 +201,39 @@
 |   rightStripe_U                                                            | -    | -    |        | rightStripe                                                            | rom_np  | auto | 1       |
 |   rightStripe_1_U                                                          | -    | -    |        | rightStripe_1                                                          | rom_np  | auto | 1       |
 |   rightStripe_2_U                                                          | -    | -    |        | rightStripe_2                                                          | rom_np  | auto | 1       |
-|   pkt_curCost_U                                                            | -    | -    |        | pkt_curCost                                                            | ram_s2p | auto | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_8_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_8    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_7_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_7    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_6_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_6    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_5_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_5    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_4_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_4    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_3_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_3    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_2_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_2    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1    | ram_1p  | bram | 1       |
-|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_U      | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT      | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_10_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_10 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_11_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_11 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_12_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_12 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_13_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_13 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_14_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_14 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_15_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_15 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_16_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_16 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_17_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_17 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_18_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_18 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_19_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_19 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_20_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_20 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_21_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_21 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_22_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_22 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_23_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_23 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_24_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_24 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_25_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_25 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_26_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_26 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_27_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_27 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_28_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_28 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_29_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_29 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30 | ram_1p  | bram | 1       |
-|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31 | ram_1p  | bram | 1       |
+|   pkt_curCost_U                                                            | -    | -    |        | pkt_curCost                                                            | ram_1p  | auto | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_8_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_8    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_7_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_7    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_6_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_6    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_5_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_5    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_4_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_4    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_3_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_3    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_2_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_2    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1_U    | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_1    | ram_2p  | bram | 1       |
+|   sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_U      | 1    | -    | pragma | sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT      | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_10_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_10 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_11_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_11 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_12_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_12 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_13_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_13 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_14_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_14 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_15_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_15 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_16_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_16 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_17_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_17 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_18_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_18 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_19_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_19 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_20_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_20 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_21_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_21 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_22_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_22 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_23_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_23 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_24_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_24 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_25_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_25 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_26_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_26 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_27_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_27 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_28_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_28 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_29_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_29 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30 | ram_2p  | bram | 1       |
+|   p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31_U | 1    | -    | pragma | p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31 | ram_2p  | bram | 1       |
 +----------------------------------------------------------------------------+------+------+--------+------------------------------------------------------------------------+---------+------+---------+
 
 
@@ -408,11 +394,11 @@
 | unroll          |                                                  | sgm_kernel/sgm_kernel.cpp:91 in compute_sad_cost_vector                                                                      |
 | unroll          |                                                  | sgm_kernel/sgm_kernel.cpp:96 in compute_sad_cost_vector                                                                      |
 | inline          | off                                              | sgm_kernel/sgm_kernel.cpp:115 in reduce_min_vec                                                                              |
-| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:121 in reduce_min_vec                                                                              |
+| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:121 in reduce_min_vec                                                                              |
 | inline          | off                                              | sgm_kernel/sgm_kernel.cpp:138 in aggregate_paths_and_select                                                                  |
-| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:146 in aggregate_paths_and_select                                                                  |
+| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:146 in aggregate_paths_and_select                                                                  |
 | inline          | off                                              | sgm_kernel/sgm_kernel.cpp:191 in commit_prev_costs                                                                           |
-| unroll          | factor=2                                         | sgm_kernel/sgm_kernel.cpp:196 in commit_prev_costs                                                                           |
+| pipeline        | II = 1                                           | sgm_kernel/sgm_kernel.cpp:196 in commit_prev_costs                                                                           |
 | inline          | off                                              | sgm_kernel/sgm_kernel.cpp:219 in col_frontend                                                                                |
 | inline          | off                                              | sgm_kernel/sgm_kernel.cpp:254 in col_backend                                                                                 |
 | interface       | axis port=left register                          | sgm_kernel/sgm_kernel.cpp:291 in sgm_kernel, left                                                                            |
@@ -420,7 +406,7 @@
 | interface       | axis port=disp register                          | sgm_kernel/sgm_kernel.cpp:293 in sgm_kernel, disp                                                                            |
 | interface       | ap_ctrl_none port=return                         | sgm_kernel/sgm_kernel.cpp:294 in sgm_kernel, return                                                                          |
 | array_partition | variable=prevCostL complete dim=1                | sgm_kernel/sgm_kernel.cpp:313 in sgm_kernel, prevCostL                                                                       |
-| bind_storage    | variable=prevCostT type=RAM_1P impl=BRAM         | sgm_kernel/sgm_kernel.cpp:316 in sgm_kernel, prevCostT                                                                       |
+| bind_storage    | variable=prevCostT type=RAM_2P impl=BRAM         | sgm_kernel/sgm_kernel.cpp:316 in sgm_kernel, prevCostT                                                                       |
 | array_partition | variable=prevCostT complete dim=2                | sgm_kernel/sgm_kernel.cpp:317 in sgm_kernel, prevCostT                                                                       |
 | array_partition | variable=aggCost complete dim=1                  | sgm_kernel/sgm_kernel.cpp:320 in sgm_kernel, aggCost                                                                         |
 | array_partition | variable=aggLR_arr complete dim=1                | sgm_kernel/sgm_kernel.cpp:324 in sgm_kernel, aggLR_arr                                                                       |
