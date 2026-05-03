@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'col_backend'
 ================================================================
-* Date:           Sun May  3 20:34:03 2026
+* Date:           Sun May  3 21:05:44 2026
 
 * Version:        2023.1 (Build 3854077 on May  4 2023)
 * Project:        sgm_kernel
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  |  10.00 ns|  7.037 ns|     2.70 ns|
+    |ap_clk  |  10.00 ns|  6.996 ns|     2.70 ns|
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |  Latency (absolute)  |  Interval | Pipeline|
     |   min   |   max   |    min    |    max   | min | max |   Type  |
     +---------+---------+-----------+----------+-----+-----+---------+
-    |        1|      114|  10.000 ns|  1.140 us|    1|  114|       no|
+    |        1|       78|  10.000 ns|  0.780 us|    1|   78|       no|
     +---------+---------+-----------+----------+-----+-----+---------+
 
     + Detail: 
@@ -38,10 +38,8 @@
         |                                       |                            |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
         |                Instance               |           Module           |   min   |   max   |    min   |    max   | min | max |   Type  |
         +---------------------------------------+----------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |grp_reduce_min_vec_fu_723              |reduce_min_vec              |       34|       34|  0.340 us|  0.340 us|   34|   34|       no|
-        |grp_reduce_min_vec_fu_759              |reduce_min_vec              |       34|       34|  0.340 us|  0.340 us|   34|   34|       no|
-        |grp_aggregate_paths_and_select_fu_795  |aggregate_paths_and_select  |       39|       39|  0.390 us|  0.390 us|   39|   39|       no|
-        |grp_commit_prev_costs_fu_1027          |commit_prev_costs           |       34|       34|  0.340 us|  0.340 us|   34|   34|       no|
+        |grp_aggregate_paths_and_select_fu_759  |aggregate_paths_and_select  |       39|       39|  0.390 us|  0.390 us|   39|   39|       no|
+        |grp_commit_prev_costs_fu_991           |commit_prev_costs           |       34|       34|  0.340 us|  0.340 us|   34|   34|       no|
         +---------------------------------------+----------------------------+---------+---------+----------+----------+-----+-----+---------+
 
         * Loop: 
@@ -57,18 +55,18 @@
 |       Name      | BRAM_18K| DSP|   FF  |  LUT  | URAM|
 +-----------------+---------+----+-------+-------+-----+
 |DSP              |        -|   -|      -|      -|    -|
-|Expression       |        -|   -|      0|      4|    -|
+|Expression       |        -|   -|      0|      2|    -|
 |FIFO             |        -|   -|      -|      -|    -|
-|Instance         |        -|   -|    606|   2454|    -|
+|Instance         |        -|   -|    602|   2024|    -|
 |Memory           |        -|   -|      -|      -|    -|
-|Multiplexer      |        -|   -|      -|   1227|    -|
-|Register         |        -|   -|   1212|      -|    -|
+|Multiplexer      |        -|   -|      -|   1270|    -|
+|Register         |        -|   -|   1256|      -|    -|
 +-----------------+---------+----+-------+-------+-----+
-|Total            |        0|   0|   1818|   3685|    0|
+|Total            |        0|   0|   1858|   3296|    0|
 +-----------------+---------+----+-------+-------+-----+
 |Available        |      120|  80|  35200|  17600|    0|
 +-----------------+---------+----+-------+-------+-----+
-|Utilization (%)  |        0|   0|      5|     20|    0|
+|Utilization (%)  |        0|   0|      5|     18|    0|
 +-----------------+---------+----+-------+-------+-----+
 
 + Detail: 
@@ -76,12 +74,10 @@
     +---------------------------------------+----------------------------+---------+----+-----+------+-----+
     |                Instance               |           Module           | BRAM_18K| DSP|  FF |  LUT | URAM|
     +---------------------------------------+----------------------------+---------+----+-----+------+-----+
-    |grp_aggregate_paths_and_select_fu_795  |aggregate_paths_and_select  |        0|   0|  269|  1617|    0|
-    |grp_commit_prev_costs_fu_1027          |commit_prev_costs           |        0|   0|  297|   341|    0|
-    |grp_reduce_min_vec_fu_723              |reduce_min_vec              |        0|   0|   20|   248|    0|
-    |grp_reduce_min_vec_fu_759              |reduce_min_vec              |        0|   0|   20|   248|    0|
+    |grp_aggregate_paths_and_select_fu_759  |aggregate_paths_and_select  |        0|   0|  305|  1683|    0|
+    |grp_commit_prev_costs_fu_991           |commit_prev_costs           |        0|   0|  297|   341|    0|
     +---------------------------------------+----------------------------+---------+----+-----+------+-----+
-    |Total                                  |                            |        0|   0|  606|  2454|    0|
+    |Total                                  |                            |        0|   0|  602|  2024|    0|
     +---------------------------------------+----------------------------+---------+----+-----+------+-----+
 
     * DSP: 
@@ -97,20 +93,25 @@
     +---------------------------------+----------+----+---+----+------------+------------+
     |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |ap_block_state8_on_subcall_done  |       and|   0|  0|   2|           1|           1|
-    |ap_block_state4_on_subcall_done  |        or|   0|  0|   2|           1|           1|
+    |ap_block_state6_on_subcall_done  |       and|   0|  0|   2|           1|           1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |Total                            |          |   0|  0|   4|           2|           2|
+    |Total                            |          |   0|  0|   2|           1|           1|
     +---------------------------------+----------+----+---+----+------------+------------+
 
     * Multiplexer: 
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
     |                                       Name                                      | LUT| Input Size| Bits| Total Bits|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
-    |agg_result_0_reg_712                                                             |   9|          2|    8|         16|
-    |ap_NS_fsm                                                                        |  48|          9|    1|          9|
-    |ap_phi_mux_agg_result_0_phi_fu_716_p4                                            |   9|          2|    8|         16|
-    |ap_return                                                                        |   9|          2|    8|         16|
+    |agg_result_0_reg_730                                                             |   9|          2|    8|         16|
+    |ap_NS_fsm                                                                        |  37|          7|    1|          7|
+    |ap_phi_mux_agg_result_0_phi_fu_734_p4                                            |   9|          2|    8|         16|
+    |ap_phi_mux_minPrevLR_0_phi_fu_744_p4                                             |   9|          2|   12|         24|
+    |ap_phi_mux_minPrevTB_0_phi_fu_753_p4                                             |   9|          2|   12|         24|
+    |ap_return_0                                                                      |   9|          2|    8|         16|
+    |ap_return_1                                                                      |   9|          2|   12|         24|
+    |ap_return_2                                                                      |   9|          2|   12|         24|
+    |minPrevLR_0_reg_741                                                              |   9|          2|   12|         24|
+    |minPrevTB_0_reg_750                                                              |   9|          2|   12|         24|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10_o         |   9|          2|   12|         24|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10_o_ap_vld  |   9|          2|    1|          2|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_11_o         |   9|          2|   12|         24|
@@ -240,23 +241,25 @@
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_o              |   9|          2|   12|         24|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_o_ap_vld       |   9|          2|    1|          2|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
-    |Total                                                                            |1227|        271|  505|       1017|
+    |Total                                                                            |1270|        281|  577|       1159|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
     +------------------------------------------------------------------------+----+----+-----+-----------+
     |                                  Name                                  | FF | LUT| Bits| Const Bits|
     +------------------------------------------------------------------------+----+----+-----+-----------+
-    |agg_result_0_reg_712                                                    |   8|   0|    8|          0|
-    |ap_CS_fsm                                                               |   8|   0|    8|          0|
-    |ap_return_preg                                                          |   8|   0|    8|          0|
-    |bestDisp_reg_1951                                                       |   8|   0|    8|          0|
-    |grp_aggregate_paths_and_select_fu_795_ap_start_reg                      |   1|   0|    1|          0|
-    |grp_commit_prev_costs_fu_1027_ap_start_reg                              |   1|   0|    1|          0|
-    |grp_reduce_min_vec_fu_723_ap_start_reg                                  |   1|   0|    1|          0|
-    |grp_reduce_min_vec_fu_759_ap_start_reg                                  |   1|   0|    1|          0|
-    |minPrevLR_reg_1941                                                      |  12|   0|   12|          0|
-    |minPrevTB_reg_1946                                                      |  12|   0|   12|          0|
+    |agg_result_0_reg_730                                                    |   8|   0|    8|          0|
+    |ap_CS_fsm                                                               |   6|   0|    6|          0|
+    |ap_return_0_preg                                                        |   8|   0|    8|          0|
+    |ap_return_1_preg                                                        |  12|   0|   12|          0|
+    |ap_return_2_preg                                                        |  12|   0|   12|          0|
+    |bestDisp_reg_1659                                                       |   8|   0|    8|          0|
+    |grp_aggregate_paths_and_select_fu_759_ap_start_reg                      |   1|   0|    1|          0|
+    |grp_commit_prev_costs_fu_991_ap_start_reg                               |   1|   0|    1|          0|
+    |minPrevLR_0_reg_741                                                     |  12|   0|   12|          0|
+    |minPrevTB_0_reg_750                                                     |  12|   0|   12|          0|
+    |newMinLR_reg_1664                                                       |  12|   0|   12|          0|
+    |newMinTB_reg_1669                                                       |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_10  |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_11  |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggLR_arr_12  |  12|   0|   12|          0|
@@ -301,38 +304,38 @@
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_29  |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_30  |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9aggTB_arr_31  |  12|   0|   12|          0|
-    |prevCostT_col_0_load_reg_1653                                           |  12|   0|   12|          0|
-    |prevCostT_col_10_load_reg_1713                                          |  12|   0|   12|          0|
-    |prevCostT_col_11_load_reg_1719                                          |  12|   0|   12|          0|
-    |prevCostT_col_12_load_reg_1725                                          |  12|   0|   12|          0|
-    |prevCostT_col_13_load_reg_1731                                          |  12|   0|   12|          0|
-    |prevCostT_col_14_load_reg_1737                                          |  12|   0|   12|          0|
-    |prevCostT_col_15_load_reg_1743                                          |  12|   0|   12|          0|
-    |prevCostT_col_16_load_reg_1749                                          |  12|   0|   12|          0|
-    |prevCostT_col_17_load_reg_1755                                          |  12|   0|   12|          0|
-    |prevCostT_col_18_load_reg_1761                                          |  12|   0|   12|          0|
-    |prevCostT_col_19_load_reg_1767                                          |  12|   0|   12|          0|
-    |prevCostT_col_1_load_reg_1659                                           |  12|   0|   12|          0|
-    |prevCostT_col_20_load_reg_1773                                          |  12|   0|   12|          0|
-    |prevCostT_col_21_load_reg_1779                                          |  12|   0|   12|          0|
-    |prevCostT_col_22_load_reg_1785                                          |  12|   0|   12|          0|
-    |prevCostT_col_23_load_reg_1791                                          |  12|   0|   12|          0|
-    |prevCostT_col_24_load_reg_1797                                          |  12|   0|   12|          0|
-    |prevCostT_col_25_load_reg_1803                                          |  12|   0|   12|          0|
-    |prevCostT_col_26_load_reg_1809                                          |  12|   0|   12|          0|
-    |prevCostT_col_27_load_reg_1815                                          |  12|   0|   12|          0|
-    |prevCostT_col_28_load_reg_1821                                          |  12|   0|   12|          0|
-    |prevCostT_col_29_load_reg_1827                                          |  12|   0|   12|          0|
-    |prevCostT_col_2_load_reg_1665                                           |  12|   0|   12|          0|
-    |prevCostT_col_30_load_reg_1833                                          |  12|   0|   12|          0|
-    |prevCostT_col_31_load_reg_1839                                          |  12|   0|   12|          0|
-    |prevCostT_col_3_load_reg_1671                                           |  12|   0|   12|          0|
-    |prevCostT_col_4_load_reg_1677                                           |  12|   0|   12|          0|
-    |prevCostT_col_5_load_reg_1683                                           |  12|   0|   12|          0|
-    |prevCostT_col_6_load_reg_1689                                           |  12|   0|   12|          0|
-    |prevCostT_col_7_load_reg_1695                                           |  12|   0|   12|          0|
-    |prevCostT_col_8_load_reg_1701                                           |  12|   0|   12|          0|
-    |prevCostT_col_9_load_reg_1707                                           |  12|   0|   12|          0|
+    |prevCostT_col_0_load_reg_1499                                           |  12|   0|   12|          0|
+    |prevCostT_col_10_load_reg_1549                                          |  12|   0|   12|          0|
+    |prevCostT_col_11_load_reg_1554                                          |  12|   0|   12|          0|
+    |prevCostT_col_12_load_reg_1559                                          |  12|   0|   12|          0|
+    |prevCostT_col_13_load_reg_1564                                          |  12|   0|   12|          0|
+    |prevCostT_col_14_load_reg_1569                                          |  12|   0|   12|          0|
+    |prevCostT_col_15_load_reg_1574                                          |  12|   0|   12|          0|
+    |prevCostT_col_16_load_reg_1579                                          |  12|   0|   12|          0|
+    |prevCostT_col_17_load_reg_1584                                          |  12|   0|   12|          0|
+    |prevCostT_col_18_load_reg_1589                                          |  12|   0|   12|          0|
+    |prevCostT_col_19_load_reg_1594                                          |  12|   0|   12|          0|
+    |prevCostT_col_1_load_reg_1504                                           |  12|   0|   12|          0|
+    |prevCostT_col_20_load_reg_1599                                          |  12|   0|   12|          0|
+    |prevCostT_col_21_load_reg_1604                                          |  12|   0|   12|          0|
+    |prevCostT_col_22_load_reg_1609                                          |  12|   0|   12|          0|
+    |prevCostT_col_23_load_reg_1614                                          |  12|   0|   12|          0|
+    |prevCostT_col_24_load_reg_1619                                          |  12|   0|   12|          0|
+    |prevCostT_col_25_load_reg_1624                                          |  12|   0|   12|          0|
+    |prevCostT_col_26_load_reg_1629                                          |  12|   0|   12|          0|
+    |prevCostT_col_27_load_reg_1634                                          |  12|   0|   12|          0|
+    |prevCostT_col_28_load_reg_1639                                          |  12|   0|   12|          0|
+    |prevCostT_col_29_load_reg_1644                                          |  12|   0|   12|          0|
+    |prevCostT_col_2_load_reg_1509                                           |  12|   0|   12|          0|
+    |prevCostT_col_30_load_reg_1649                                          |  12|   0|   12|          0|
+    |prevCostT_col_31_load_reg_1654                                          |  12|   0|   12|          0|
+    |prevCostT_col_3_load_reg_1514                                           |  12|   0|   12|          0|
+    |prevCostT_col_4_load_reg_1519                                           |  12|   0|   12|          0|
+    |prevCostT_col_5_load_reg_1524                                           |  12|   0|   12|          0|
+    |prevCostT_col_6_load_reg_1529                                           |  12|   0|   12|          0|
+    |prevCostT_col_7_load_reg_1534                                           |  12|   0|   12|          0|
+    |prevCostT_col_8_load_reg_1539                                           |  12|   0|   12|          0|
+    |prevCostT_col_9_load_reg_1544                                           |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr       |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_1     |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggLR_arr_2     |  12|   0|   12|          0|
@@ -354,7 +357,7 @@
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_8     |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_aggTB_arr_9     |  12|   0|   12|          0|
     +------------------------------------------------------------------------+----+----+-----+-----------+
-    |Total                                                                   |1212|   0| 1212|          0|
+    |Total                                                                   |1256|   0| 1256|          0|
     +------------------------------------------------------------------------+----+----+-----+-----------+
 
 
@@ -372,7 +375,9 @@
 |ap_done                                                                          |  out|    1|  ap_ctrl_hs|                                                             col_backend|  return value|
 |ap_idle                                                                          |  out|    1|  ap_ctrl_hs|                                                             col_backend|  return value|
 |ap_ready                                                                         |  out|    1|  ap_ctrl_hs|                                                             col_backend|  return value|
-|ap_return                                                                        |  out|    8|  ap_ctrl_hs|                                                             col_backend|  return value|
+|ap_return_0                                                                      |  out|    8|  ap_ctrl_hs|                                                             col_backend|  return value|
+|ap_return_1                                                                      |  out|   12|  ap_ctrl_hs|                                                             col_backend|  return value|
+|ap_return_2                                                                      |  out|   12|  ap_ctrl_hs|                                                             col_backend|  return value|
 |pkt_valid_val                                                                    |   in|    1|     ap_none|                                                           pkt_valid_val|        scalar|
 |pkt_curCost_address0                                                             |  out|    5|   ap_memory|                                                             pkt_curCost|         array|
 |pkt_curCost_ce0                                                                  |  out|    1|   ap_memory|                                                             pkt_curCost|         array|
@@ -602,6 +607,8 @@
 |prevCostT_col_31_ce1                                                             |  out|    1|   ap_memory|                                                        prevCostT_col_31|         array|
 |prevCostT_col_31_we1                                                             |  out|    1|   ap_memory|                                                        prevCostT_col_31|         array|
 |prevCostT_col_31_d1                                                              |  out|   12|   ap_memory|                                                        prevCostT_col_31|         array|
+|p_read1                                                                          |   in|   12|     ap_none|                                                                 p_read1|        scalar|
+|p_read2                                                                          |   in|   12|     ap_none|                                                                 p_read2|        scalar|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9_i            |   in|   12|     ap_ovld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9_o            |  out|   12|     ap_ovld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9|       pointer|
 |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9_o_ap_vld     |  out|    1|     ap_ovld|     sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9|       pointer|

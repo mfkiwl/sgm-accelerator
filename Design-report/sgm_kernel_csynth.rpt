@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'sgm_kernel'
 ================================================================
-* Date:           Sun May  3 20:34:04 2026
+* Date:           Sun May  3 21:05:45 2026
 
 * Version:        2023.1 (Build 3854077 on May  4 2023)
 * Project:        sgm_kernel
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  |  10.00 ns|  7.037 ns|     2.70 ns|
+    |ap_clk  |  10.00 ns|  7.002 ns|     2.70 ns|
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -29,7 +29,7 @@
     |  Latency (cycles) |  Latency (absolute)  |     Interval     | Pipeline|
     |   min   |   max   |    min   |    max    |   min  |   max   |   Type  |
     +---------+---------+----------+-----------+--------+---------+---------+
-    |   197668|  5450980|  1.977 ms|  54.510 ms|  197669|  5450981|       no|
+    |   197668|  4345060|  1.977 ms|  43.451 ms|  197669|  4345061|       no|
     +---------+---------+----------+-----------+--------+---------+---------+
 
     + Detail: 
@@ -38,13 +38,13 @@
         |                                                                 |                                                      |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
         |                             Instance                            |                        Module                        |   min   |   max   |    min    |    max    |  min |  max |   Type  |
         +-----------------------------------------------------------------+------------------------------------------------------+---------+---------+-----------+-----------+------+------+---------+
-        |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1_fu_526          |sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1          |      962|      962|   9.620 us|   9.620 us|   962|   962|       no|
-        |grp_sgm_kernel_Pipeline_ResetCosts_fu_538                        |sgm_kernel_Pipeline_ResetCosts                        |       18|       18|   0.180 us|   0.180 us|    18|    18|       no|
-        |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_606              |sgm_kernel_Pipeline_InitTBRow_InitTBRowD              |     5122|     5122|  51.220 us|  51.220 us|  5122|  5122|       no|
-        |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2_fu_674      |sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2      |       11|       11|   0.110 us|   0.110 us|    11|    11|       no|
-        |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3_fu_690  |sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3  |      104|      104|   1.040 us|   1.040 us|   104|   104|       no|
-        |grp_col_frontend_fu_697                                          |col_frontend                                          |        3|       42|  30.000 ns|   0.420 us|     3|    42|       no|
-        |grp_col_backend_fu_730                                           |col_backend                                           |        1|      114|  10.000 ns|   1.140 us|     1|   114|       no|
+        |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1_fu_569          |sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1          |      962|      962|   9.620 us|   9.620 us|   962|   962|       no|
+        |grp_sgm_kernel_Pipeline_ResetCosts_fu_581                        |sgm_kernel_Pipeline_ResetCosts                        |       18|       18|   0.180 us|   0.180 us|    18|    18|       no|
+        |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_649              |sgm_kernel_Pipeline_InitTBRow_InitTBRowD              |     5122|     5122|  51.220 us|  51.220 us|  5122|  5122|       no|
+        |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2_fu_717      |sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2      |       11|       11|   0.110 us|   0.110 us|    11|    11|       no|
+        |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3_fu_733  |sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3  |      104|      104|   1.040 us|   1.040 us|   104|   104|       no|
+        |grp_col_frontend_fu_740                                          |col_frontend                                          |        3|       42|  30.000 ns|   0.420 us|     3|    42|       no|
+        |grp_col_backend_fu_773                                           |col_backend                                           |        1|       78|  10.000 ns|   0.780 us|     1|    78|       no|
         +-----------------------------------------------------------------+------------------------------------------------------+---------+---------+-----------+-----------+------+------+---------+
 
         * Loop: 
@@ -52,8 +52,8 @@
         |                     |  Latency (cycles) |   Iteration  |  Initiation Interval  | Trip |          |
         |      Loop Name      |   min   |   max   |    Latency   |  achieved |   target  | Count| Pipelined|
         +---------------------+---------+---------+--------------+-----------+-----------+------+----------+
-        |- Row                |   196704|  5450016|  2049 ~ 56771|          -|          -|    96|        no|
-        | + VITIS_LOOP_382_4  |     1920|    51520|       6 ~ 161|          -|          -|   320|        no|
+        |- Row                |   196704|  4344096|  2049 ~ 45251|          -|          -|    96|        no|
+        | + VITIS_LOOP_403_4  |     1920|    40000|       6 ~ 125|          -|          -|   320|        no|
         +---------------------+---------+---------+--------------+-----------+-----------+------+----------+
 
 
@@ -68,16 +68,16 @@
 |DSP              |        -|   -|      -|      -|    -|
 |Expression       |        -|   -|      0|    106|    -|
 |FIFO             |        -|   -|      -|      -|    -|
-|Instance         |        -|   -|   2372|   5797|    -|
-|Memory           |       36|   -|     41|     13|    0|
-|Multiplexer      |        -|   -|      -|   3038|    -|
-|Register         |        -|   -|    647|      -|    -|
+|Instance         |        -|   -|   2412|   5408|    -|
+|Memory           |       37|   -|     41|     13|    0|
+|Multiplexer      |        -|   -|      -|   3079|    -|
+|Register         |        -|   -|    704|      -|    -|
 +-----------------+---------+----+-------+-------+-----+
-|Total            |       36|   0|   3060|   8954|    0|
+|Total            |       37|   0|   3157|   8606|    0|
 +-----------------+---------+----+-------+-------+-----+
 |Available        |      120|  80|  35200|  17600|    0|
 +-----------------+---------+----+-------+-------+-----+
-|Utilization (%)  |       30|   0|      8|     50|    0|
+|Utilization (%)  |       30|   0|      8|     48|    0|
 +-----------------+---------+----+-------+-------+-----+
 
 + Detail: 
@@ -85,15 +85,15 @@
     +-----------------------------------------------------------------+------------------------------------------------------+---------+----+------+------+-----+
     |                             Instance                            |                        Module                        | BRAM_18K| DSP|  FF  |  LUT | URAM|
     +-----------------------------------------------------------------+------------------------------------------------------+---------+----+------+------+-----+
-    |grp_col_backend_fu_730                                           |col_backend                                           |        0|   0|  1818|  3685|    0|
-    |grp_col_frontend_fu_697                                          |col_frontend                                          |        0|   0|   406|  1462|    0|
-    |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1_fu_526          |sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1          |        0|   0|    35|   149|    0|
-    |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2_fu_674      |sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2      |        0|   0|    58|   189|    0|
-    |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3_fu_690  |sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3  |        0|   0|    17|   137|    0|
-    |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_606              |sgm_kernel_Pipeline_InitTBRow_InitTBRowD              |        0|   0|    30|   134|    0|
-    |grp_sgm_kernel_Pipeline_ResetCosts_fu_538                        |sgm_kernel_Pipeline_ResetCosts                        |        0|   0|     8|    41|    0|
+    |grp_col_backend_fu_773                                           |col_backend                                           |        0|   0|  1858|  3296|    0|
+    |grp_col_frontend_fu_740                                          |col_frontend                                          |        0|   0|   406|  1462|    0|
+    |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1_fu_569          |sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1          |        0|   0|    35|   149|    0|
+    |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2_fu_717      |sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2      |        0|   0|    58|   189|    0|
+    |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3_fu_733  |sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3  |        0|   0|    17|   137|    0|
+    |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_649              |sgm_kernel_Pipeline_InitTBRow_InitTBRowD              |        0|   0|    30|   134|    0|
+    |grp_sgm_kernel_Pipeline_ResetCosts_fu_581                        |sgm_kernel_Pipeline_ResetCosts                        |        0|   0|     8|    41|    0|
     +-----------------------------------------------------------------+------------------------------------------------------+---------+----+------+------+-----+
-    |Total                                                            |                                                      |        0|   0|  2372|  5797|    0|
+    |Total                                                            |                                                      |        0|   0|  2412|  5408|    0|
     +-----------------------------------------------------------------+------------------------------------------------------+---------+----+------+------+-----+
 
     * DSP: 
@@ -107,6 +107,7 @@
     |bufR_1_U                                                                  |bufL_1_RAM_S2P_BRAM_0R0W                                                          |        1|   0|   0|    0|   320|    1|     1|          320|
     |bufL_U                                                                    |bufL_RAM_S2P_BRAM_0R0W                                                            |        1|   0|   0|    0|   320|    8|     1|         2560|
     |bufR_U                                                                    |bufL_RAM_S2P_BRAM_0R0W                                                            |        1|   0|   0|    0|   320|    8|     1|         2560|
+    |minPrevT_U                                                                |minPrevT_RAM_AUTO_1R1W                                                            |        1|   0|   0|    0|   320|   12|     1|         3840|
     |pkt_curCost_U                                                             |pkt_curCost_RAM_AUTO_1R1W                                                         |        0|  11|   6|    0|    32|   11|     1|          352|
     |rightStripe_1_U                                                           |rightStripe_1_RAM_1WNR_AUTO_1R1W                                                  |        0|   3|   1|    0|    34|    1|     1|           34|
     |rightStripe_2_U                                                           |rightStripe_1_RAM_1WNR_AUTO_1R1W                                                  |        0|   3|   1|    0|    34|    1|     1|           34|
@@ -144,7 +145,7 @@
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_30_U  |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9_RAM_2P_BRbkb  |        1|   0|   0|    0|   320|   12|     1|         3840|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostT_31_U  |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_9_RAM_2P_BRbkb  |        1|   0|   0|    0|   320|   12|     1|         3840|
     +--------------------------------------------------------------------------+----------------------------------------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
-    |Total                                                                     |                                                                                  |       36|  41|  13|    0| 11654|  423|    40|       129332|
+    |Total                                                                     |                                                                                  |       37|  41|  13|    0| 11974|  435|    41|       133172|
     +--------------------------------------------------------------------------+----------------------------------------------------------------------------------+---------+----+----+-----+------+-----+------+-------------+
 
     * FIFO: 
@@ -154,16 +155,16 @@
     +---------------------------------+----------+----+---+----+------------+------------+
     |          Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +---------------------------------+----------+----+---+----+------------+------------+
-    |add_ln382_fu_1067_p2             |         +|   0|  0|  14|           9|           1|
-    |add_ln391_fu_1131_p2             |         +|   0|  0|  14|           9|           2|
-    |r_2_fu_1008_p2                   |         +|   0|  0|  14|           7|           1|
+    |add_ln403_fu_1113_p2             |         +|   0|  0|  14|           9|           1|
+    |add_ln421_fu_1177_p2             |         +|   0|  0|  14|           9|           2|
+    |r_2_fu_1054_p2                   |         +|   0|  0|  14|           7|           1|
     |ap_block_state12                 |       and|   0|  0|   2|           1|           1|
     |ap_block_state5_on_subcall_done  |       and|   0|  0|   2|           1|           1|
     |ap_block_state8                  |       and|   0|  0|   2|           1|           1|
-    |icmp_ln337_fu_1002_p2            |      icmp|   0|  0|  14|           7|           7|
-    |icmp_ln349_fu_1014_p2            |      icmp|   0|  0|  14|           7|           1|
-    |icmp_ln382_fu_1061_p2            |      icmp|   0|  0|  14|           9|           9|
-    |icmp_ln392_fu_1137_p2            |      icmp|   0|  0|  14|           9|           1|
+    |icmp_ln356_fu_1048_p2            |      icmp|   0|  0|  14|           7|           7|
+    |icmp_ln370_fu_1060_p2            |      icmp|   0|  0|  14|           7|           1|
+    |icmp_ln403_fu_1107_p2            |      icmp|   0|  0|  14|           9|           9|
+    |icmp_ln422_fu_1188_p2            |      icmp|   0|  0|  14|           9|           1|
     |ap_block_state6_on_subcall_done  |        or|   0|  0|   2|           1|           1|
     +---------------------------------+----------+----+---+----+------------+------------+
     |Total                            |          |   0|  0| 106|          61|          26|
@@ -174,6 +175,7 @@
     |                                       Name                                      | LUT| Input Size| Bits| Total Bits|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
     |ap_NS_fsm                                                                        |  65|         14|    1|         14|
+    |ap_phi_mux_minPrevLR_1_phi_fu_561_p4                                             |   9|          2|   12|         24|
     |bufL_1_address1                                                                  |  14|          3|    9|         27|
     |bufL_1_ce1                                                                       |  14|          3|    1|          3|
     |bufL_1_d1                                                                        |  14|          3|    1|          3|
@@ -190,16 +192,19 @@
     |bufR_ce1                                                                         |  14|          3|    1|          3|
     |bufR_d1                                                                          |  14|          3|    8|         24|
     |bufR_we1                                                                         |  14|          3|    1|          3|
-    |c_reg_514                                                                        |   9|          2|    9|         18|
+    |c_reg_545                                                                        |   9|          2|    9|         18|
     |disp_TDATA_blk_n                                                                 |   9|          2|    1|          2|
     |disp_TDATA_int_regslice                                                          |  14|          3|    8|         24|
-    |leftWin_1_1_reg_504                                                              |   9|          2|    8|         16|
-    |leftWin_2_1_reg_494                                                              |   9|          2|    8|         16|
-    |leftWin_4_1_reg_484                                                              |   9|          2|    8|         16|
-    |leftWin_5_1_reg_472                                                              |   9|          2|    8|         16|
-    |leftWin_7_1_reg_462                                                              |   9|          2|    8|         16|
-    |leftWin_8_1_reg_450                                                              |   9|          2|    8|         16|
+    |leftWin_1_1_reg_535                                                              |   9|          2|    8|         16|
+    |leftWin_2_1_reg_525                                                              |   9|          2|    8|         16|
+    |leftWin_4_1_reg_515                                                              |   9|          2|    8|         16|
+    |leftWin_5_1_reg_503                                                              |   9|          2|    8|         16|
+    |leftWin_7_1_reg_493                                                              |   9|          2|    8|         16|
+    |leftWin_8_1_reg_481                                                              |   9|          2|    8|         16|
     |left_r_TREADY_int_regslice                                                       |   9|          2|    1|          2|
+    |minPrevLR_0_reg_457                                                              |   9|          2|   12|         24|
+    |minPrevLR_1_reg_557                                                              |   9|          2|   12|         24|
+    |minPrevT_address0                                                                |  14|          3|    9|         27|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10           |   9|          2|   12|         24|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_11           |   9|          2|   12|         24|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12           |   9|          2|   12|         24|
@@ -335,7 +340,7 @@
     |pkt_curCost_address0                                                             |  14|          3|    5|         15|
     |pkt_curCost_ce0                                                                  |  14|          3|    1|          3|
     |pkt_curCost_we0                                                                  |   9|          2|    1|          2|
-    |r_fu_346                                                                         |   9|          2|    7|         14|
+    |r_fu_352                                                                         |   9|          2|    7|         14|
     |rightStripe_1_address0                                                           |  14|          3|    6|         18|
     |rightStripe_1_ce0                                                                |  14|          3|    1|          3|
     |rightStripe_1_ce1                                                                |   9|          2|    1|          2|
@@ -355,7 +360,7 @@
     |rightStripe_d0                                                                   |  14|          3|    8|         24|
     |rightStripe_we0                                                                  |  14|          3|    1|          3|
     |right_r_TREADY_int_regslice                                                      |   9|          2|    1|          2|
-    |right_wr_0_reg_438                                                               |   9|          2|   32|         64|
+    |right_wr_0_reg_469                                                               |   9|          2|   32|         64|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL                |   9|          2|   12|         24|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1              |   9|          2|   12|         24|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_2              |   9|          2|   12|         24|
@@ -417,42 +422,47 @@
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_d1             |  14|          3|   12|         36|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostT_we1            |  14|          3|    1|          3|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
-    |Total                                                                            |3038|        657| 1369|       3596|
+    |Total                                                                            |3079|        666| 1414|       3695|
     +---------------------------------------------------------------------------------+----+-----------+-----+-----------+
 
     * Register: 
     +------------------------------------------------------------------------------+----+----+-----+-----------+
     |                                     Name                                     | FF | LUT| Bits| Const Bits|
     +------------------------------------------------------------------------------+----+----+-----+-----------+
-    |add_ln382_reg_1278                                                            |   9|   0|    9|          0|
-    |add_ln391_reg_1313                                                            |   9|   0|    9|          0|
+    |add_ln403_reg_1343                                                            |   9|   0|    9|          0|
+    |add_ln421_reg_1378                                                            |   9|   0|    9|          0|
     |ap_CS_fsm                                                                     |  13|   0|   13|          0|
-    |c_reg_514                                                                     |   9|   0|    9|          0|
-    |grp_col_backend_fu_730_ap_start_reg                                           |   1|   0|    1|          0|
-    |grp_col_frontend_fu_697_ap_start_reg                                          |   1|   0|    1|          0|
-    |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_304_1_fu_526_ap_start_reg          |   1|   0|    1|          0|
-    |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_367_2_fu_674_ap_start_reg      |   1|   0|    1|          0|
-    |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_376_3_fu_690_ap_start_reg  |   1|   0|    1|          0|
-    |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_606_ap_start_reg              |   1|   0|    1|          0|
-    |grp_sgm_kernel_Pipeline_ResetCosts_fu_538_ap_start_reg                        |   1|   0|    1|          0|
-    |icmp_ln349_reg_1235                                                           |   1|   0|    1|          0|
-    |icmp_ln392_reg_1318                                                           |   1|   0|    1|          0|
-    |leftWin_1_1_reg_504                                                           |   8|   0|    8|          0|
-    |leftWin_1_reg_1293                                                            |   8|   0|    8|          0|
-    |leftWin_2_1_reg_494                                                           |   8|   0|    8|          0|
-    |leftWin_2_reg_1298                                                            |   8|   0|    8|          0|
-    |leftWin_3_reg_1303                                                            |   8|   0|    8|          0|
-    |leftWin_4_1_reg_484                                                           |   8|   0|    8|          0|
-    |leftWin_4_fu_350                                                              |   8|   0|    8|          0|
-    |leftWin_5_0_fu_362                                                            |   8|   0|    8|          0|
-    |leftWin_5_1_reg_472                                                           |   8|   0|    8|          0|
-    |leftWin_5_fu_354                                                              |   8|   0|    8|          0|
-    |leftWin_6_fu_358                                                              |   8|   0|    8|          0|
-    |leftWin_7_1_reg_462                                                           |   8|   0|    8|          0|
-    |leftWin_7_fu_366                                                              |   8|   0|    8|          0|
-    |leftWin_8_0_fu_370                                                            |   8|   0|    8|          0|
-    |leftWin_8_1_reg_450                                                           |   8|   0|    8|          0|
-    |leftWin_reg_1288                                                              |   8|   0|    8|          0|
+    |c_reg_545                                                                     |   9|   0|    9|          0|
+    |grp_col_backend_fu_773_ap_start_reg                                           |   1|   0|    1|          0|
+    |grp_col_frontend_fu_740_ap_start_reg                                          |   1|   0|    1|          0|
+    |grp_sgm_kernel_Pipeline_InitBuf_VITIS_LOOP_321_1_fu_569_ap_start_reg          |   1|   0|    1|          0|
+    |grp_sgm_kernel_Pipeline_InitLeftWin_VITIS_LOOP_388_2_fu_717_ap_start_reg      |   1|   0|    1|          0|
+    |grp_sgm_kernel_Pipeline_InitRightStripe_VITIS_LOOP_397_3_fu_733_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sgm_kernel_Pipeline_InitTBRow_InitTBRowD_fu_649_ap_start_reg              |   1|   0|    1|          0|
+    |grp_sgm_kernel_Pipeline_ResetCosts_fu_581_ap_start_reg                        |   1|   0|    1|          0|
+    |icmp_ln370_reg_1300                                                           |   1|   0|    1|          0|
+    |icmp_ln422_reg_1383                                                           |   1|   0|    1|          0|
+    |leftWin_1_1_reg_535                                                           |   8|   0|    8|          0|
+    |leftWin_1_reg_1358                                                            |   8|   0|    8|          0|
+    |leftWin_2_1_reg_525                                                           |   8|   0|    8|          0|
+    |leftWin_2_reg_1363                                                            |   8|   0|    8|          0|
+    |leftWin_3_reg_1368                                                            |   8|   0|    8|          0|
+    |leftWin_4_1_reg_515                                                           |   8|   0|    8|          0|
+    |leftWin_4_fu_356                                                              |   8|   0|    8|          0|
+    |leftWin_5_0_fu_368                                                            |   8|   0|    8|          0|
+    |leftWin_5_1_reg_503                                                           |   8|   0|    8|          0|
+    |leftWin_5_fu_360                                                              |   8|   0|    8|          0|
+    |leftWin_6_fu_364                                                              |   8|   0|    8|          0|
+    |leftWin_7_1_reg_493                                                           |   8|   0|    8|          0|
+    |leftWin_7_fu_372                                                              |   8|   0|    8|          0|
+    |leftWin_8_0_fu_376                                                            |   8|   0|    8|          0|
+    |leftWin_8_1_reg_481                                                           |   8|   0|    8|          0|
+    |leftWin_reg_1353                                                              |   8|   0|    8|          0|
+    |minPrevLR_0_reg_457                                                           |  12|   0|   12|          0|
+    |minPrevLR_1_reg_557                                                           |  12|   0|   12|          0|
+    |minPrevLR_reg_1402                                                            |  12|   0|   12|          0|
+    |minPrevT_addr_reg_1387                                                        |   9|   0|    9|          0|
+    |minPrevT_load_reg_1392                                                        |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_10        |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_11        |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_12        |  12|   0|   12|          0|
@@ -475,12 +485,12 @@
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_29        |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_30        |  12|   0|   12|          0|
     |p_ZZ10sgm_kernelRN3hls6streamI7ap_uintILi8EELi0EEES4_S4_E9prevCostL_31        |  12|   0|   12|          0|
-    |pkt_valid_reg_1283                                                            |   1|   0|    1|          0|
-    |r_1_reg_1222                                                                  |   7|   0|    7|          0|
-    |r_2_reg_1230                                                                  |   7|   0|    7|          0|
-    |r_fu_346                                                                      |   7|   0|    7|          0|
-    |right_wr_0_reg_438                                                            |  32|   0|   32|          0|
-    |right_wr_reg_1308                                                             |  32|   0|   32|          0|
+    |pkt_valid_reg_1348                                                            |   1|   0|    1|          0|
+    |r_1_reg_1287                                                                  |   7|   0|    7|          0|
+    |r_2_reg_1295                                                                  |   7|   0|    7|          0|
+    |r_fu_352                                                                      |   7|   0|    7|          0|
+    |right_wr_0_reg_469                                                            |  32|   0|   32|          0|
+    |right_wr_reg_1373                                                             |  32|   0|   32|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL             |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_1           |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_2           |  12|   0|   12|          0|
@@ -492,7 +502,7 @@
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_8           |  12|   0|   12|          0|
     |sgm_kernel_stream_stream_ap_uint_8_0_stream_ap_uint_8_0_prevCostL_9           |  12|   0|   12|          0|
     +------------------------------------------------------------------------------+----+----+-----+-----------+
-    |Total                                                                         | 647|   0|  647|          0|
+    |Total                                                                         | 704|   0|  704|          0|
     +------------------------------------------------------------------------------+----+----+-----+-----------+
 
 

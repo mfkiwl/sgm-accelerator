@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'aggregate_paths_and_select'
 ================================================================
-* Date:           Sun May  3 20:34:03 2026
+* Date:           Sun May  3 21:05:44 2026
 
 * Version:        2023.1 (Build 3854077 on May  4 2023)
 * Project:        sgm_kernel
@@ -38,7 +38,7 @@
         |                                                                |                                                     |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
         |                            Instance                            |                        Module                       |   min   |   max   |    min   |    max   | min | max |   Type  |
         +----------------------------------------------------------------+-----------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |       36|       36|  0.360 us|  0.360 us|   36|   36|       no|
+        |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_496  |aggregate_paths_and_select_Pipeline_AggregationLoop  |       36|       36|  0.360 us|  0.360 us|   36|   36|       no|
         +----------------------------------------------------------------+-----------------------------------------------------+---------+---------+----------+----------+-----+-----+---------+
 
         * Loop: 
@@ -56,12 +56,12 @@
 |DSP              |        -|   -|      -|      -|    -|
 |Expression       |        -|   -|      0|     76|    -|
 |FIFO             |        -|   -|      -|      -|    -|
-|Instance         |        -|   -|    240|   1516|    -|
+|Instance         |        -|   -|    276|   1582|    -|
 |Memory           |        -|   -|      -|      -|    -|
 |Multiplexer      |        -|   -|      -|     25|    -|
 |Register         |        -|   -|     29|      -|    -|
 +-----------------+---------+----+-------+-------+-----+
-|Total            |        0|   0|    269|   1617|    0|
+|Total            |        0|   0|    305|   1683|    0|
 +-----------------+---------+----+-------+-------+-----+
 |Available        |      120|  80|  35200|  17600|    0|
 +-----------------+---------+----+-------+-------+-----+
@@ -73,9 +73,9 @@
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
     |                            Instance                            |                        Module                       | BRAM_18K| DSP|  FF |  LUT | URAM|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
-    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486  |aggregate_paths_and_select_Pipeline_AggregationLoop  |        0|   0|  240|  1516|    0|
+    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_496  |aggregate_paths_and_select_Pipeline_AggregationLoop  |        0|   0|  276|  1582|    0|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
-    |Total                                                           |                                                     |        0|   0|  240|  1516|    0|
+    |Total                                                           |                                                     |        0|   0|  276|  1582|    0|
     +----------------------------------------------------------------+-----------------------------------------------------+---------+----+-----+------+-----+
 
     * DSP: 
@@ -91,12 +91,12 @@
     +--------------------------+----------+----+---+----+------------+------------+
     |       Variable Name      | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
     +--------------------------+----------+----+---+----+------------+------------+
-    |add_i108_fu_749_p2        |         +|   0|  0|  14|          13|           8|
-    |add_i279_fu_725_p2        |         +|   0|  0|  14|          13|           8|
-    |conv2_i_i_i254_fu_739_p2  |         +|   0|  0|  12|          12|           8|
-    |conv2_i_i_i83_fu_763_p2   |         +|   0|  0|  12|          12|           8|
-    |p3_LR_fu_769_p3           |    select|   0|  0|  12|           1|           2|
-    |p3_TB_fu_777_p3           |    select|   0|  0|  12|           1|           2|
+    |add_i114_fu_761_p2        |         +|   0|  0|  14|          13|           8|
+    |add_i285_fu_737_p2        |         +|   0|  0|  14|          13|           8|
+    |conv2_i_i_i260_fu_751_p2  |         +|   0|  0|  12|          12|           8|
+    |conv2_i_i_i89_fu_775_p2   |         +|   0|  0|  12|          12|           8|
+    |p3_LR_fu_781_p3           |    select|   0|  0|  12|           1|           2|
+    |p3_TB_fu_789_p3           |    select|   0|  0|  12|           1|           2|
     +--------------------------+----------+----+---+----+------------+------------+
     |Total                     |          |   0|  0|  76|          52|          36|
     +--------------------------+----------+----+---+----+------------+------------+
@@ -115,9 +115,9 @@
     |                                     Name                                    | FF | LUT| Bits| Const Bits|
     +-----------------------------------------------------------------------------+----+----+-----+-----------+
     |ap_CS_fsm                                                                    |   4|   0|    4|          0|
-    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_486_ap_start_reg  |   1|   0|    1|          0|
-    |p3_LR_reg_964                                                                |  12|   0|   12|          0|
-    |p3_TB_reg_969                                                                |  12|   0|   12|          0|
+    |grp_aggregate_paths_and_select_Pipeline_AggregationLoop_fu_496_ap_start_reg  |   1|   0|    1|          0|
+    |p3_LR_reg_1012                                                               |  12|   0|   12|          0|
+    |p3_TB_reg_1017                                                               |  12|   0|   12|          0|
     +-----------------------------------------------------------------------------+----+----+-----+-----------+
     |Total                                                                        |  29|   0|   29|          0|
     +-----------------------------------------------------------------------------+----+----+-----+-----------+
@@ -137,7 +137,9 @@
 |ap_done                                                                        |  out|    1|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
 |ap_idle                                                                        |  out|    1|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
 |ap_ready                                                                       |  out|    1|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
-|ap_return                                                                      |  out|    8|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
+|ap_return_0                                                                    |  out|    8|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
+|ap_return_1                                                                    |  out|   12|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
+|ap_return_2                                                                    |  out|   12|  ap_ctrl_hs|                                              aggregate_paths_and_select|  return value|
 |curCost_address0                                                               |  out|    5|   ap_memory|                                                                 curCost|         array|
 |curCost_ce0                                                                    |  out|    1|   ap_memory|                                                                 curCost|         array|
 |curCost_q0                                                                     |   in|   11|   ap_memory|                                                                 curCost|         array|
